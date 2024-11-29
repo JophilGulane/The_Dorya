@@ -80,28 +80,6 @@ namespace Game_Character_GUI
             HighlightSelection(picMage);
         }
 
-        private void picMage_MouseEnter(object sender, EventArgs e)
-        {
-            picMage.BorderStyle = BorderStyle.Fixed3D;
-        }
-
-        private void picMage_MouseLeave(object sender, EventArgs e)
-        {
-            if (CharacterType != "Mage")
-                picMage.BorderStyle = BorderStyle.None;
-        }
-
-        private void picWarrior_MouseEnter(object sender, EventArgs e)
-        {
-            picWarrior.BorderStyle = BorderStyle.Fixed3D;
-        }
-
-        private void picWarrior_MouseLeave(object sender, EventArgs e)
-        {
-            if (CharacterType != "Warrior")
-                picWarrior.BorderStyle = BorderStyle.None;
-        }
-
         private void HighlightSelection(PictureBox selectedPictureBox)
         {
             // Reset all picture borders

@@ -254,7 +254,7 @@ public partial class GameplayForm : Form
             // Move the player towards the enemy
             picPlayer.Location = MoveTowards(picPlayer.Location, enemyPos, stepSize);
 
-            // Ensure that the player and enemy are brought to the front during movemen
+            // Ensure that the player and enemy are brought to the front during movement
 
             // Check if the player has reached the enemy
             if (picPlayer.Location == enemyPos)
