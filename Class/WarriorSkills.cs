@@ -6,48 +6,51 @@ using System.Threading.Tasks;
 
 namespace Game_Character_GUI.Class
 {
-    public class SwordSlash : Skills
+    public class WarriorSkills : Skills
     {
-        public SwordSlash() : base("Sword Slash", 0, 10, 30, 0, "Warrior's basic attack.")
+        public WarriorSkills() : base("", 0, 0, 0, 0, "")
         {
 
         }
-        public override int Use()
+        public override int UseBasicSkill()
         {
+            Name = "Sword Slash";
+            ManaCost = 0;
+            StaminaCost = 10;
+            Damage = 30;
+            Buff = 0;
+            Description = "Warrior's basic attack.";
             return Damage;
         }
-    }
-    public class SwordofJustice : Skills
-    {
-        public SwordofJustice() : base("Sword of Justice", 0, 20, 80, 0, "Warrior's ulitimate attack.")
+        public override int UseUltimateSkill()
         {
-
-        }
-        public override int Use()
-        {
+            Name = "Sword of Justice";
+            ManaCost = 0;
+            StaminaCost = 20;
+            Damage = 80;
+            Buff = 0;
+            Description = "Warrior's ultimate attack.";
             return Damage;
         }
-    }
-    public class DesertEagle : Skills
-    {
-        public DesertEagle() : base("Desert Eagle", 0, 0, 20, 0, "Parry this you filthy casual.")
+        public override int UseResortSkill()
         {
-
-        }
-        public override int Use()
-        {
+            Name = "Desert Eagle";
+            ManaCost = 0;
+            StaminaCost = 0;
+            Damage = 20;
+            Buff = 0;
+            Description = "Parry this you filthy casual";
             return Damage;
         }
-    }
-    public class SwordAura : Skills
-    {
-        public SwordAura() : base("Sword Aura ", 0, 0, 0, 20, "I am the bone of my sword.")
+        public override int UseBuffSkill()
         {
-
-        }
-        public override int Use()
-        {
+            Name = "Desert Eagle";
+            ManaCost = 0;
+            StaminaCost = 20;
+            Damage = 0;
+            Buff = 20;
+            Description = "Parry this you filthy casual";
             return Buff;
         }
-    }
+    } 
 }

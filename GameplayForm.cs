@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System;
 using System.Drawing;
 using System.Diagnostics;
+using Game_Character_GUI.Class;
 
 public partial class GameplayForm : Form
 {
@@ -275,6 +276,14 @@ public partial class GameplayForm : Form
         }
     }
 
+    private void GameplayForm_Load_1(object sender, EventArgs e)
+    {
 
+    }
 
+    private void Btn_Test_Click(object sender, EventArgs e)
+    {
+        int damage = SkillData.CurrentPlayer.UseBasicSkill();
+        Txt_Test.Text = damage.ToString() + SkillData.CurrentPlayer.Name;
+    }
 }

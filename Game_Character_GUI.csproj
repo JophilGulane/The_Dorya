@@ -50,6 +50,7 @@
     <Compile Include="Class\GameCharacter.cs" />
     <Compile Include="Class\Mage.cs" />
     <Compile Include="Class\MageSkills.cs" />
+    <Compile Include="Class\SkillData.cs" />
     <Compile Include="Class\Skills.cs" />
     <Compile Include="Class\Warrior.cs" />
     <Compile Include="Class\WarriorSkills.cs" />

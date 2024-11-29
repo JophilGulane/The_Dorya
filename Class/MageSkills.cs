@@ -6,47 +6,50 @@ using System.Threading.Tasks;
 
 namespace Game_Character_GUI.Class
 {
-    public class FireBall : Skills
+    public class MageSkills : Skills
     {
-        public FireBall() : base("Fire Ball", 10, 0, 30, 0, "Mage's basic attack.")
+        public MageSkills() : base("", 0, 0, 0, 0, "")
         {
 
         }
-        public override int Use()
+        public override int UseBasicSkill()
         {
+            Name = "Fire ball";
+            ManaCost = 10;
+            StaminaCost = 0;
+            Damage = 30;
+            Buff = 0;
+            Description = "Mage's basic attack.";
             return Damage;
         }
-    }
-    public class Explosion : Skills
-    {
-        public Explosion() : base("Sword of Justice", 20, 0, 80, 0, "Mage's ulitimate attack.")
+        public override int UseUltimateSkill()
         {
-
-        }
-        public override int Use()
-        {
+            Name = "Explosion";
+            ManaCost = 20;
+            StaminaCost = 0;
+            Damage = 80;
+            Buff = 0;
+            Description = "Mage's ultimate attack.";
             return Damage;
         }
-    }
-    public class StickPummel : Skills
-    {
-        public StickPummel() : base("Stick Pummel", 0, 0, 20, 0, "No more mister nice guy.")
+        public override int UseResortSkill()
         {
-
-        }
-        public override int Use()
-        {
+            Name = "Stick Pummel";
+            ManaCost = 0;
+            StaminaCost = 0;
+            Damage = 20;
+            Buff = 0;
+            Description = "No more mister nice guy.";
             return Damage;
         }
-    }
-    public class ArmamentEnchant : Skills
-    {
-        public ArmamentEnchant() : base("ArmamentEnchant", 0, 0, 0, 20, "Imagine if I had a real weapon.")
+        public override int UseBuffSkill()
         {
-
-        }
-        public override int Use()
-        {
+            Name = "Armament Enchant";
+            ManaCost = 20;
+            StaminaCost = 0;
+            Damage = 0;
+            Buff = 20;
+            Description = "Imagine if I had a real weapon.";
             return Buff;
         }
     }

@@ -71,7 +71,11 @@ namespace Game_Character_GUI.Class
             Description = _description;
         }
 
-        public abstract int Use();
+
+        public abstract int UseBasicSkill();
+        public abstract int UseUltimateSkill();
+        public abstract int UseResortSkill();
+        public abstract int UseBuffSkill();
     }
 
 }

@@ -71,12 +71,14 @@ namespace Game_Character_GUI
         private void picWarrior_Click(object sender, EventArgs e)
         {
             CharacterType = "Warrior";
+            SkillData.CurrentPlayer = new WarriorSkills();
             HighlightSelection(picWarrior);
         }
 
         private void picMage_Click(object sender, EventArgs e)
         {
             CharacterType = "Mage";
+            SkillData.CurrentPlayer = new MageSkills();
             HighlightSelection(picMage);
         }
 
