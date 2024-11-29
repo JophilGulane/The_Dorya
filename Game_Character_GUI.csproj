@@ -126,5 +126,16 @@
   <ItemGroup>
     <None Include="Resources\MageDefeatEnemy.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Animations\Background.jpg" />
+    <Content Include="Animations\MageAttack.gif" />
+    <Content Include="Animations\MageAttackEnemy.gif" />
+    <Content Include="Animations\MageDefeat.gif" />
+    <Content Include="Animations\MageDefeatEnemy.gif" />
+    <Content Include="Animations\MageIdle.gif" />
+    <Content Include="Animations\MageIdleEnemy.gif" />
+    <Content Include="Animations\WarriorAttack.gif" />
+    <Content Include="Animations\WarriorIdle.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

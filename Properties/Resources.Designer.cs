@@ -73,6 +73,16 @@ namespace Game_Character_GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap MageAttack {
+            get {
+                object obj = ResourceManager.GetObject("MageAttack", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap MageAttackEnemy {
             get {
                 object obj = ResourceManager.GetObject("MageAttackEnemy", resourceCulture);
@@ -83,9 +93,29 @@ namespace Game_Character_GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap MageDefeat {
+            get {
+                object obj = ResourceManager.GetObject("MageDefeat", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap MageDefeatEnemy {
             get {
                 object obj = ResourceManager.GetObject("MageDefeatEnemy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap MageIdle {
+            get {
+                object obj = ResourceManager.GetObject("MageIdle", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
