@@ -13,6 +13,7 @@ namespace Game_Character_GUI.Class
         private int _health;
         private int _defense;
 
+
         public string Name
         {
             get => _name;

@@ -26,6 +26,8 @@ public partial class GameplayForm : Form
             this.battleLog = new System.Windows.Forms.RichTextBox();
             this.attackTimer = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Btn_Test = new System.Windows.Forms.Button();
+            this.Txt_Test = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picPlayer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEnemy)).BeginInit();
             this.SuspendLayout();
@@ -146,10 +148,31 @@ public partial class GameplayForm : Form
             this.panel1.Size = new System.Drawing.Size(0, 0);
             this.panel1.TabIndex = 12;
             // 
+            // Btn_Test
+            // 
+            this.Btn_Test.Location = new System.Drawing.Point(63, 90);
+            this.Btn_Test.Name = "Btn_Test";
+            this.Btn_Test.Size = new System.Drawing.Size(75, 23);
+            this.Btn_Test.TabIndex = 13;
+            this.Btn_Test.Text = "Test";
+            this.Btn_Test.UseVisualStyleBackColor = true;
+            this.Btn_Test.Click += new System.EventHandler(this.Btn_Test_Click);
+            // 
+            // Txt_Test
+            // 
+            this.Txt_Test.Location = new System.Drawing.Point(145, 90);
+            this.Txt_Test.Multiline = true;
+            this.Txt_Test.Name = "Txt_Test";
+            this.Txt_Test.ReadOnly = true;
+            this.Txt_Test.Size = new System.Drawing.Size(164, 106);
+            this.Txt_Test.TabIndex = 14;
+            // 
             // GameplayForm
             // 
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.Txt_Test);
+            this.Controls.Add(this.Btn_Test);
             this.ClientSize = new System.Drawing.Size(1000, 500);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.battleLog);
@@ -163,9 +186,11 @@ public partial class GameplayForm : Form
             this.Controls.Add(this.btnAttack);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "GameplayForm";
+            this.Load += new System.EventHandler(this.GameplayForm_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.picPlayer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEnemy)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
     }
 
@@ -177,4 +202,6 @@ public partial class GameplayForm : Form
     private System.ComponentModel.IContainer components;
     public Timer attackTimer;
     private Panel panel1;
+    private Button Btn_Test;
+    private TextBox Txt_Test;
 }
