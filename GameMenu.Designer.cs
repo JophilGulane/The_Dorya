@@ -21,16 +21,17 @@
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameMenu));
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.lblCharacterType = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.btnStartGame = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.MageText = new System.Windows.Forms.TextBox();
-            this.WarriorText = new System.Windows.Forms.TextBox();
             this.picWarrior = new System.Windows.Forms.PictureBox();
             this.picMage = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picWarrior)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMage)).BeginInit();
             this.SuspendLayout();
@@ -93,33 +94,11 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // MageText
-            // 
-            this.MageText.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.MageText.Font = new System.Drawing.Font("Modern No. 20", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MageText.ForeColor = System.Drawing.Color.Black;
-            this.MageText.Location = new System.Drawing.Point(568, 141);
-            this.MageText.Name = "MageText";
-            this.MageText.Size = new System.Drawing.Size(184, 21);
-            this.MageText.TabIndex = 10;
-            this.MageText.Text = "MAGE";
-            this.MageText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // WarriorText
-            // 
-            this.WarriorText.Font = new System.Drawing.Font("Modern No. 20", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WarriorText.Location = new System.Drawing.Point(257, 146);
-            this.WarriorText.Name = "WarriorText";
-            this.WarriorText.Size = new System.Drawing.Size(179, 21);
-            this.WarriorText.TabIndex = 11;
-            this.WarriorText.Text = "WARRIOR";
-            this.WarriorText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // picWarrior
             // 
             this.picWarrior.BackColor = System.Drawing.SystemColors.Control;
             this.picWarrior.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picWarrior.Image = global::Game_Character_GUI.Properties.Resources.WarriorIdle;
+            this.picWarrior.Image = ((System.Drawing.Image)(resources.GetObject("picWarrior.Image")));
             this.picWarrior.Location = new System.Drawing.Point(257, 174);
             this.picWarrior.Name = "picWarrior";
             this.picWarrior.Size = new System.Drawing.Size(179, 154);
@@ -133,7 +112,7 @@
             this.picMage.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.picMage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.picMage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picMage.Image = global::Game_Character_GUI.Properties.Resources.MageIdleEnemy;
+            this.picMage.Image = ((System.Drawing.Image)(resources.GetObject("picMage.Image")));
             this.picMage.Location = new System.Drawing.Point(568, 174);
             this.picMage.Name = "picMage";
             this.picMage.Size = new System.Drawing.Size(184, 154);
@@ -142,12 +121,32 @@
             this.picMage.TabStop = false;
             this.picMage.Click += new System.EventHandler(this.picMage_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Modern No. 20", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(305, 156);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(76, 15);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "WARRIOR";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Modern No. 20", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(637, 156);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 15);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "MAGE";
+            // 
             // GameMenu
             // 
             this.BackColor = System.Drawing.Color.LightBlue;
-            this.ClientSize = new System.Drawing.Size(982, 485);
-            this.Controls.Add(this.WarriorText);
-            this.Controls.Add(this.MageText);
+            this.ClientSize = new System.Drawing.Size(1000, 500);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.picWarrior);
             this.Controls.Add(this.picMage);
             this.Controls.Add(this.lblTitle);
@@ -156,6 +155,7 @@
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.btnStartGame);
             this.Controls.Add(this.btnExit);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "GameMenu";
             this.Text = "Main Menu";
             ((System.ComponentModel.ISupportInitialize)(this.picWarrior)).EndInit();
@@ -166,7 +166,7 @@
         }
         private System.Windows.Forms.PictureBox picMage;
         private System.Windows.Forms.PictureBox picWarrior;
-        private System.Windows.Forms.TextBox MageText;
-        private System.Windows.Forms.TextBox WarriorText;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

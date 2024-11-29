@@ -12,28 +12,14 @@ public partial class GameplayForm : Form
     private GameCharacter player;
     private Enemy currentEnemy;
     private List<Enemy> enemyList;
-    private Point playerStartPos;  // Initial position of the player's PictureBox
-    private Point enemyPos;       // Target position (enemy's PictureBox)
-    private bool movingToEnemy;   // Flag to indicate direction of movement
-    private int stepSize = 10;    // Distance to move per timer tick
-
-
     public GameplayForm(GameCharacter playerCharacter)
     {
         InitializeComponent();
         this.player = playerCharacter;
+        InitializePlayer();
         LoadEnemies();
-
-
         StartBattle();
     }
-
-    private void GameplayForm_Load(object sender, EventArgs e)
-    {
-               // Start by moving to the enemy
-    }
-
-
     private void LoadEnemies()
     {
         enemyList = new List<Enemy>
@@ -46,27 +32,14 @@ public partial class GameplayForm : Form
 
     private void StartBattle()
     {
-        playerStartPos = picPlayer.Location;   // Save initial position
-        enemyPos = picEnemy.Location;
-
-        AddToBattleLog($"enemyPos initialized to: {enemyPos}", Color.Red);// Target position
-
-        // Set the correct idle animation for the player
         if (GameMenu.CharacterType == "Warrior")
         {
             picPlayer.Image = Game_Character_GUI.Properties.Resources.WarriorIdle;
         }
         else if (GameMenu.CharacterType == "Mage")
         {
-            picPlayer.Image = Game_Character_GUI.Properties.Resources.MageIdleEnemy;
+            picPlayer.Image = Game_Character_GUI.Properties.Resources.MageIdle;
         }
-
-        // Update player display
-        lblPlayerName.Text = $"Player: {player.Name}";
-        // Player health bar
-        playerHealthBar.Maximum = player.Health; // Set max health
-        playerHealthBar.Value = player.Health;   // Start at full health
-
         LoadNextEnemy();
     }
 
@@ -81,7 +54,8 @@ public partial class GameplayForm : Form
             enemyList.RemoveAt(index);  // Remove the picked enemy from the list
 
             // Update enemy display (name, health)
-            lblEnemyName.Text = $"Enemy: {currentEnemy.Name}";
+            lblEnemyName.Text = $"{currentEnemy.Name}";
+            lblEnemyName.ForeColor = Color.Red;
             EnemyHealthBar.Maximum = currentEnemy.Health; // Set max health
             EnemyHealthBar.Value = currentEnemy.Health;   // Start at full health
 
@@ -112,34 +86,52 @@ public partial class GameplayForm : Form
 
     private void btnAttack_Click(object sender, EventArgs e)
     {
-        movingToEnemy = true;
+        int damage = 0;
         if (player is Warrior warrior)
         {
-            warrior.Attack();
-            picPlayer.Image = Game_Character_GUI.Properties.Resources.WarriorAttack; // Warrior Attack GIF
+            damage = warrior.Attack();
+            currentEnemy.TakeDamage(damage);
+            AddToBattleLog($"Player attacks {currentEnemy.Name} for {warrior.Attack()} damage", Color.Red);
+            ShowDamagePopup(damage, picEnemy);
+            picPlayer.Image = Game_Character_GUI.Properties.Resources.WarriorAttack;
         }
         else if (player is Mage mage)
         {
-            mage.Attack();
-            picPlayer.Image = Game_Character_GUI.Properties.Resources.MageIdleEnemy; // Mage Attack GIF
+            damage = mage.Attack();
+            currentEnemy.TakeDamage(damage);
+            AddToBattleLog($"Player attacks {currentEnemy.Name} for {mage.Attack()} damage", Color.Red);
+            ShowDamagePopup(damage, picEnemy);
+            picPlayer.Image = Game_Character_GUI.Properties.Resources.MageAttack;
         }
-        movingToEnemy = true;  // Start moving toward the enemy
-        attackTimer.Start();
 
-        // Apply damage to the enemy
-        currentEnemy.TakeDamage(CalculatePlayerDamage());
+
         UpdateHealthBar(EnemyHealthBar, currentEnemy.Health);
 
+        Timer animationTimer = new Timer();
 
-        // Log the battle action
-        AddToBattleLog($"Player attacks {currentEnemy.Name} for {CalculatePlayerDamage()} damage", Color.Red);
 
-        // Check if the enemy is defeated
+        if (GameMenu.CharacterType == "Warrior")
+        {
+            animationTimer.Interval = 3000;
+        }
+        else if (GameMenu.CharacterType == "Mage")
+        {
+            animationTimer.Interval = 6000;
+        }
+        animationTimer.Tick += (s, ev) =>
+        {
+            if (player is Warrior)
+                picPlayer.Image = Game_Character_GUI.Properties.Resources.WarriorIdle;
+            else if (player is Mage)
+                picPlayer.Image = Game_Character_GUI.Properties.Resources.MageIdle;
+            animationTimer.Stop();
+            animationTimer.Dispose();
+        };
+        animationTimer.Start();
+
         if (currentEnemy.Health <= 0)
         {
-            picEnemy.Image = Game_Character_GUI.Properties.Resources.MageIdleEnemy; // Enemy Defeat GIF
             AddToBattleLog($"{currentEnemy.Name} defeated!", Color.Green);
-
             player.LevelUp();
             AddToBattleLog(player.LevelUp(), Color.Blue);
             StartBattle();
@@ -150,46 +142,86 @@ public partial class GameplayForm : Form
         }
     }
 
-    private int CalculatePlayerDamage()
+    private void ShowDamagePopup(int damage, Control target)
     {
-        if (player is Warrior warrior)
+        Label damageLabel = new Label
         {
-            return warrior.Strength * 2; // Example Warrior damage
-        }
-        else if (player is Mage mage)
+            Text = $"-{damage}",
+            AutoSize = true,
+            Font = new Font("Arial", 16, FontStyle.Bold),
+            ForeColor = Color.Red,
+            BackColor = Color.Transparent
+        };
+
+        damageLabel.Location = new Point(
+            target.Left + (target.Width / 2) - (damageLabel.Width / 2),
+            target.Top - 20
+        );
+
+        this.Controls.Add(damageLabel);
+
+        int animationSteps = 15;
+        int stepDuration = 100;
+        int moveUpPixels = 1;
+        int alpha = 255;
+
+        Timer animationTimer = new Timer();
+        animationTimer.Interval = stepDuration;
+        animationTimer.Tick += (s, e) =>
         {
-            return mage.Intelligence * 3 + mage.SpellPower; // Example Mage damage
-        }
-        return 0; // Fallback
+            if (animationSteps > 0)
+            {
+                damageLabel.Top -= moveUpPixels;
+
+                alpha -= 255 / 20;
+                damageLabel.ForeColor = Color.FromArgb(
+                    Math.Max(alpha, 0),
+                    damageLabel.ForeColor.R,
+                    damageLabel.ForeColor.G,
+                    damageLabel.ForeColor.B
+                );
+
+                animationSteps--;
+            }
+            else
+            {
+                animationTimer.Stop();
+                animationTimer.Dispose();
+                this.Controls.Remove(damageLabel);
+                damageLabel.Dispose();
+            }
+        };
+
+        animationTimer.Start();
     }
+
 
     private void EnemyTurn()
     {
-        // Display enemy's attack animation
-        picEnemy.Image = Game_Character_GUI.Properties.Resources.MageIdleEnemy; // Example enemy attack GIF
-
-        // Perform the enemy's attack on the player, but include defense logic
+        picEnemy.Image = Game_Character_GUI.Properties.Resources.MageIdleEnemy;
         int damage = currentEnemy.Attack(player);
-        int reducedDamage = player.Defend(damage); // The player's defense reduces the damage
+        int reducedDamage = player.Defend(damage);
 
-        // Apply the reduced damage to the player's health
-        player.Health -= reducedDamage;
+        if (reducedDamage == 0)
+        {
+            AddToBattleLog($"{currentEnemy.Name} attacked blocked", Color.Green);
+        }
+        else
+        {
+            player.Health -= reducedDamage;
+            AddToBattleLog($"{currentEnemy.Name} attacks Player and deals {reducedDamage} damage!", Color.Gold);
+        }
+        ShowDamagePopup(reducedDamage, picPlayer);
+
         UpdateHealthBar(playerHealthBar, player.Health);
 
-
-        // Log the enemy's action
-        AddToBattleLog($"{currentEnemy.Name} attacks Player and deals {reducedDamage} damage!", Color.Gold);
-
-        // Check if the player is defeated
         if (player.Health <= 0)
         {
-            picPlayer.Image = Game_Character_GUI.Properties.Resources.MageIdleEnemy; // Player Defeat GIF
             MessageBox.Show("You have been defeated!");
             Application.Exit();
             return;
         }
 
-        // After the attack, reset the enemy's GIF to their idle animation
         switch (currentEnemy.Name)
         {
             case "Goblin":
@@ -202,17 +234,25 @@ public partial class GameplayForm : Form
                 picEnemy.Image = Game_Character_GUI.Properties.Resources.MageIdleEnemy;
                 break;
             default:
-                picEnemy.Image = Game_Character_GUI.Properties.Resources.MageIdleEnemy; // Default idle GIF if no match
+                picEnemy.Image = Game_Character_GUI.Properties.Resources.MageIdleEnemy;
                 break;
         }
     }
 
+    public void InitializePlayer()
+    {
+        lblPlayerName.Text = $"{player.Name}";
+        lblPlayerName.ForeColor = Color.White;
+        playerHealthBar.Maximum = player.Health;
+        playerHealthBar.Value = player.Health;
+    }
     public void UpdateHealthBar(ProgressBar healthBar, int currentHealth)
     {
-        if (currentHealth < 0) currentHealth = 0; // Prevent negative health
-        if (currentHealth > healthBar.Maximum) currentHealth = healthBar.Maximum; // Prevent overflow
+        if (currentHealth < 0) currentHealth = 0;
+        if (currentHealth > healthBar.Maximum) currentHealth = healthBar.Maximum;
         healthBar.Value = currentHealth;
     }
+
 
 
     private void btnCheckStats_Click(object sender, EventArgs e)
@@ -226,56 +266,8 @@ public partial class GameplayForm : Form
         battleLog.AppendText(message + Environment.NewLine);
         battleLog.Select(start, message.Length);
         battleLog.SelectionColor = textColor;
-        battleLog.Select(battleLog.TextLength, 0); // Deselect text
+        battleLog.Select(battleLog.TextLength, 0);
     }
-
-    private Point MoveTowards(Point current, Point target, int step)
-    {
-        int dx = target.X - current.X;  // Horizontal difference
-        int dy = target.Y - current.Y;  // Vertical difference
-        int distance = (int)Math.Sqrt(dx * dx + dy * dy);  // Calculate the distance
-
-        if (distance <= step) return target; // If close enough, snap to the target
-
-        // Calculate new position by stepping toward the target
-        int stepX = (dx * step) / distance;
-        int stepY = (dy * step) / distance;
-
-        return new Point(current.X + stepX, current.Y + stepY);
-    }
-
-    private void attackTimer_Tick_1(object sender, EventArgs e)
-    {
-        AddToBattleLog($"Moving towards enemy at {enemyPos}",Color.Red);
-        // Debugging current positions
-        Debug.WriteLine($"Player Position: {picPlayer.Location}, Enemy Position: {enemyPos}");
-
-        if (movingToEnemy)
-        {
-            // Move the player towards the enemy
-            picPlayer.Location = MoveTowards(picPlayer.Location, enemyPos, stepSize);
-
-            // Ensure that the player and enemy are brought to the front during movement
-
-            // Check if the player has reached the enemy
-            if (picPlayer.Location == enemyPos)
-            {
-                movingToEnemy = false;
-            }
-        }
-        else
-        {
-            // After attacking, move the player back to the starting position
-            picPlayer.Location = MoveTowards(picPlayer.Location, playerStartPos, stepSize);
-
-            // Check if the player has returned to the start position
-            if (picPlayer.Location == playerStartPos)
-            {
-                attackTimer.Stop(); // Stop the timer when the player reaches the start position
-            }
-        }
-    }
-
     private void GameplayForm_Load_1(object sender, EventArgs e)
     {
 

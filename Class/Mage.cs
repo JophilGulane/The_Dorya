@@ -8,59 +8,81 @@ namespace Game_Character_GUI.Class
 {
     public class Mage : GameCharacter
     {
-        private int spellPower;
+        private int attackPower;
+        private int intelligence;
+        private int mana;
 
-        public int SpellPower
+        public int AttackPower
         {
-            get => spellPower;
+            get => attackPower;
             private set
             {
                 if (value >= 0)
-                    spellPower = value;
+                    attackPower = value;
             }
         }
 
-        public Mage(string _name, int _level, int _health, int _mana, int _intelligence)
-            : base(_name, _level, _health, _mana, 0, _intelligence)
+        public int Intelligence
         {
-            SpellPower = 10;
+            get => intelligence;
+            private set
+            {
+                if (value >= 0) 
+                    intelligence = value;
+
+            }
+        }
+
+        public int Mana
+        {
+            get => mana;
+            private set
+            {
+                if (value >= 0)
+                    mana = value;
+            }
+        }
+
+        public Mage(string _name, int _level, int _health, int _defense)
+            : base(_name, _level, _health, _defense)
+        {
+            AttackPower = 7 + 3*_level;
+            Mana = 35 + (10 * _level);
+            Intelligence = 3 + 2 * _level;
         }
 
         public override int Attack()
         {
-            int magicDamage = Intelligence * 3 + SpellPower;
+            int magicDamage = attackPower * (Intelligence / 4);
             bool burningEffect = new Random().Next(100) < 25;
 
-            Console.WriteLine($"{Name} casts a spell for {magicDamage} magic damage{(burningEffect ? " and applies a burning effect!" : "")}.");
-            Console.WriteLine();
+            if (burningEffect)
+            {
+                return magicDamage += 10;
+            }
+                return magicDamage;
 
-            return magicDamage;
         }
 
         public override int Defend(int damage)
         {
-            int damageReduction = Mana / 4;
+            int damageReduction = Defense / 4;
             bool evaded = new Random().Next(100) < 20;
-            int totalDamage = 0;
-
-            Console.WriteLine((evaded) ? ($"{Name} evaded the attack!") : ($"{Name} reduced incoming damage by {damageReduction}."));
-            Console.WriteLine();
 
             if (evaded)
             {
-
+                return damage = 0;
             }
-
-            return totalDamage;
+                return damage - damageReduction;
         }
 
         public override string LevelUp()
         {
             return ($"<--- {Name} leveled up! New stats --->\n" +
-                              $"Level: {Level} --> {++Level}\n" +
-                              $"Intelligence: {Intelligence} --> {Intelligence += 5}\n" +
-                              $"Mana: {Mana} --> {Mana += 15}\n" +
-                              $"SpellPower: {SpellPower} --> {SpellPower += 3}");
+                    $"Level: {Level} --> {++Level}\n" +
+                    $"Intelligence: {Intelligence} --> {Intelligence += 2}\n" +
+                    $"Mana: {Mana} --> {Mana += 10}\n" +
+                    $"SpellPower: {AttackPower} --> {AttackPower += 3}");
         }
 
         public override string CheckStats()
@@ -69,7 +91,7 @@ namespace Game_Character_GUI.Class
                    $"Level: {Level}\n" +
                    $"Intelligence: {Intelligence}\n" +
                    $"Health: {Health}\n" +
-                   $"SpellPower: {SpellPower}") + "\n";
+                   $"AttackPower: {AttackPower}") + "\n";
 
         }
     }

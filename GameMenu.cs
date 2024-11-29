@@ -54,7 +54,7 @@ namespace Game_Character_GUI
             }
             else if (characterType == "Mage")
             {
-                return new Mage(PlayerName, 1, 100, 15, 10);  // Example Mage
+                return new Mage(PlayerName, 1, 100, 15);  // Example Mage
             }
             else
             {
