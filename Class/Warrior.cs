@@ -8,53 +8,82 @@ namespace Game_Character_GUI.Class
 {
     public class Warrior : GameCharacter
     {
-        private int armor;
+        private int attackDamage;
+        private int strength;
+        private int stamina;
 
-        public int Armor
+        public int AttackDamage
         {
-            get => armor;
+            get => attackDamage;
             private set
             {
                 if (value >= 0)
-                    armor = value;
+                    attackDamage = value;
             }
         }
 
-        public Warrior(string _name, int _level, int _health, int _strength)
-            : base(_name, _level, _health, 0, _strength, 0)
+        public int Strength
         {
-            Armor = 10;
+            get => strength;
+            private set
+            {
+                if (value >= 0)
+                    strength = value;
+
+            }
+        }
+
+        public int Stamina
+        {
+            get => stamina;
+            private set
+            {
+                if (value >= 0)
+                    stamina = value;
+            }
+        }
+        public Warrior(string _name, int _level, int _health, int _armor)
+            : base(_name, _level, _health, _armor)
+        {
+            AttackDamage = 7 + 3 * _level;
+            Stamina = 35 + (10 * _level);
+            Strength = 3 + 2 * _level;
         }
 
         public override int Attack()
         {
-            int baseDamage = Strength * 2;
+            int baseDamage = AttackDamage * (Strength / 4);
+            int criticalDamage = 10;
             bool isCritical = new Random().Next(100) < 20;
-            int finalDamage = isCritical ? baseDamage * 2 : baseDamage;
 
-            Console.WriteLine($"{Name} attacks for {finalDamage} damage{(isCritical ? " Critical Hit!! " : "")}.");
-            Console.WriteLine();
-            return finalDamage;
+            if (isCritical)
+            {
+                return baseDamage + criticalDamage;
+            }
+
+            return baseDamage;
         }
 
         public override int Defend(int damage)
         {
-            int damageReduction = Armor / 2;
+            int damageReduction = Defense / 4;
             bool blocked = new Random().Next(100) < 15;
 
-            Console.WriteLine((blocked) ? ($"{Name} blocked the attack completely!") : ($"{Name} reduced incoming damage by {damageReduction}."));
-            Console.WriteLine();
+            if (blocked)
+            {
+                return damage = 0;
+            }
 
-            return blocked ? 0 : damageReduction;
+            return damage - damageReduction;
         }
 
         public override string LevelUp()
         {
             return ($"<--- {Name} leveled up! New stats --->\n" +
-                              $"Level: {Level} --> {++Level}\n" +
-                              $"Strength: {Strength} --> {Strength += 5}\n" +
-                              $"Health: {Health} --> {Health += 20}\n" +
-                              $"Armor: {Armor} --> {Armor += 2}");
+                    $"Level: {Level} --> {++Level}\n" +
+                    $"Intelligence: {Strength} --> {Strength += 2}\n" +
+                    $"Mana: {Stamina} --> {Stamina += 10}\n" +
+                    $"SpellPower: {AttackDamage} --> {AttackDamage += 3}");
         }
 
         public override string CheckStats()
@@ -63,7 +92,7 @@ namespace Game_Character_GUI.Class
                    $"Level: {Level}\n" +
                    $"Strength: {Strength}\n" +
                    $"Health: {Health}\n" +
-                   $"Armor: {Armor}") + "\n";
+                   $"AttackDamage: {AttackDamage}") + "\n";
 
         }
 

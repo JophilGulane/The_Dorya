@@ -13,6 +13,7 @@ public partial class GameplayForm : Form
     private void InitializeComponent()
     {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameplayForm));
             this.lblPlayerName = new System.Windows.Forms.Label();
             this.picPlayer = new System.Windows.Forms.PictureBox();
             this.lblEnemyName = new System.Windows.Forms.Label();
@@ -45,9 +46,9 @@ public partial class GameplayForm : Form
             // 
             this.picPlayer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.picPlayer.BackColor = System.Drawing.Color.Transparent;
-            this.picPlayer.Location = new System.Drawing.Point(122, 128);
+            this.picPlayer.Location = new System.Drawing.Point(122, 196);
             this.picPlayer.Name = "picPlayer";
-            this.picPlayer.Size = new System.Drawing.Size(345, 301);
+            this.picPlayer.Size = new System.Drawing.Size(345, 270);
             this.picPlayer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picPlayer.TabIndex = 2;
             this.picPlayer.TabStop = false;
@@ -68,9 +69,9 @@ public partial class GameplayForm : Form
             // 
             this.picEnemy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.picEnemy.BackColor = System.Drawing.Color.Transparent;
-            this.picEnemy.Location = new System.Drawing.Point(522, 128);
+            this.picEnemy.Location = new System.Drawing.Point(536, 196);
             this.picEnemy.Name = "picEnemy";
-            this.picEnemy.Size = new System.Drawing.Size(345, 301);
+            this.picEnemy.Size = new System.Drawing.Size(331, 270);
             this.picEnemy.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picEnemy.TabIndex = 5;
             this.picEnemy.TabStop = false;
@@ -83,7 +84,7 @@ public partial class GameplayForm : Form
             this.btnAttack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAttack.Font = new System.Drawing.Font("Arial", 14F);
             this.btnAttack.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnAttack.Location = new System.Drawing.Point(777, 75);
+            this.btnAttack.Location = new System.Drawing.Point(228, 75);
             this.btnAttack.Name = "btnAttack";
             this.btnAttack.Size = new System.Drawing.Size(141, 45);
             this.btnAttack.TabIndex = 6;
@@ -94,9 +95,9 @@ public partial class GameplayForm : Form
             // EnemyHealthBar
             // 
             this.EnemyHealthBar.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.EnemyHealthBar.Location = new System.Drawing.Point(522, 46);
+            this.EnemyHealthBar.Location = new System.Drawing.Point(536, 46);
             this.EnemyHealthBar.Name = "EnemyHealthBar";
-            this.EnemyHealthBar.Size = new System.Drawing.Size(345, 23);
+            this.EnemyHealthBar.Size = new System.Drawing.Size(331, 23);
             this.EnemyHealthBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.EnemyHealthBar.TabIndex = 8;
             // 
@@ -113,32 +114,32 @@ public partial class GameplayForm : Form
             // btnCheckStats
             // 
             this.btnCheckStats.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnCheckStats.Location = new System.Drawing.Point(522, 77);
+            this.btnCheckStats.BackColor = System.Drawing.Color.Transparent;
+            this.btnCheckStats.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnCheckStats.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnCheckStats.Font = new System.Drawing.Font("Modern No. 20", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCheckStats.ForeColor = System.Drawing.Color.Red;
+            this.btnCheckStats.Location = new System.Drawing.Point(38, 75);
             this.btnCheckStats.Name = "btnCheckStats";
-            this.btnCheckStats.Size = new System.Drawing.Size(153, 23);
+            this.btnCheckStats.Size = new System.Drawing.Size(141, 47);
             this.btnCheckStats.TabIndex = 10;
-            this.btnCheckStats.Text = "Check Stats";
-            this.btnCheckStats.UseVisualStyleBackColor = true;
+            this.btnCheckStats.Text = "Check Status";
+            this.btnCheckStats.UseVisualStyleBackColor = false;
             this.btnCheckStats.Click += new System.EventHandler(this.btnCheckStats_Click);
             // 
             // battleLog
             // 
             this.battleLog.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.battleLog.Location = new System.Drawing.Point(346, 128);
+            this.battleLog.Location = new System.Drawing.Point(392, 87);
             this.battleLog.Name = "battleLog";
-            this.battleLog.Size = new System.Drawing.Size(255, 123);
+            this.battleLog.Size = new System.Drawing.Size(222, 101);
             this.battleLog.TabIndex = 11;
             this.battleLog.Text = "";
-            // 
-            // attackTimer
-            // 
-            this.attackTimer.Interval = 10;
-            this.attackTimer.Tick += new System.EventHandler(this.attackTimer_Tick_1);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.BackgroundImage = global::Game_Character_GUI.Properties.Resources.Background;
+            this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panel1.Location = new System.Drawing.Point(0, 2);
             this.panel1.Name = "panel1";
@@ -147,9 +148,9 @@ public partial class GameplayForm : Form
             // 
             // GameplayForm
             // 
-            this.BackgroundImage = global::Game_Character_GUI.Properties.Resources.Background;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(900, 500);
+            this.ClientSize = new System.Drawing.Size(1000, 500);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.battleLog);
             this.Controls.Add(this.btnCheckStats);
@@ -160,6 +161,7 @@ public partial class GameplayForm : Form
             this.Controls.Add(this.lblEnemyName);
             this.Controls.Add(this.picEnemy);
             this.Controls.Add(this.btnAttack);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "GameplayForm";
             ((System.ComponentModel.ISupportInitialize)(this.picPlayer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEnemy)).EndInit();

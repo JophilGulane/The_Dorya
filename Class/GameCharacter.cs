@@ -11,9 +11,7 @@ namespace Game_Character_GUI.Class
         private string _name;
         private int _level;
         private int _health;
-        private int _mana;
-        private int _strength;
-        private int _intelligence;
+        private int _defense;
 
         public string Name
         {
@@ -41,50 +39,27 @@ namespace Game_Character_GUI.Class
             }
         }
 
-        public int Mana
+        public int Defense
         {
-            get => _mana;
-            protected set
+            get => _defense;
+            set
             {
                 if (value >= 0)
-                    _mana = value;
+                    _defense = value;
             }
         }
 
-        public int Strength
-        {
-            get => _strength;
-            protected set
-            {
-                if (value >= 0)
-                    _strength = value;
-            }
-        }
-
-        public int Intelligence
-        {
-            get => _intelligence;
-            protected set
-            {
-                if (value >= 0)
-                    _intelligence = value;
-            }
-        }
-
-        public GameCharacter(string _name, int _level, int _health, int _mana, int _strength, int _intelligence)
+        public GameCharacter(string _name, int _level, int _health, int _defense)
         {
             Name = _name;
             Level = _level;
             Health = _health;
-            Mana = _mana;
-            Strength = _strength;
-            Intelligence = _intelligence;
+            Defense = _defense;
         }
 
         public abstract int Attack();
         public abstract int Defend(int damage);
         public abstract string LevelUp();
-
         public abstract string CheckStats();
     }
 }
