@@ -15,6 +15,7 @@ namespace Game_Character_GUI.Class
         private int _strength;
         private int _intelligence;
 
+
         public string Name
         {
             get => _name;
