@@ -34,7 +34,6 @@ namespace Game_Character_GUI.Class
             get => _health;
             set
             {
-                if (value >= 0)
                     _health = value;
             }
         }

@@ -34,13 +34,13 @@ public partial class GameplayForm : Form
             // 
             this.lblPlayerName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblPlayerName.BackColor = System.Drawing.Color.Transparent;
-            this.lblPlayerName.Font = new System.Drawing.Font("Arial", 14F);
+            this.lblPlayerName.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPlayerName.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblPlayerName.Location = new System.Drawing.Point(117, 20);
+            this.lblPlayerName.Location = new System.Drawing.Point(38, 20);
             this.lblPlayerName.Name = "lblPlayerName";
-            this.lblPlayerName.Size = new System.Drawing.Size(169, 23);
+            this.lblPlayerName.Size = new System.Drawing.Size(429, 23);
             this.lblPlayerName.TabIndex = 0;
-            this.lblPlayerName.Text = "Player: ";
+            this.lblPlayerName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // picPlayer
             // 
@@ -57,13 +57,13 @@ public partial class GameplayForm : Form
             // 
             this.lblEnemyName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblEnemyName.BackColor = System.Drawing.Color.Transparent;
-            this.lblEnemyName.Font = new System.Drawing.Font("Arial", 14F);
+            this.lblEnemyName.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEnemyName.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblEnemyName.Location = new System.Drawing.Point(635, 20);
+            this.lblEnemyName.Location = new System.Drawing.Point(536, 20);
             this.lblEnemyName.Name = "lblEnemyName";
-            this.lblEnemyName.Size = new System.Drawing.Size(175, 23);
+            this.lblEnemyName.Size = new System.Drawing.Size(425, 23);
             this.lblEnemyName.TabIndex = 3;
-            this.lblEnemyName.Text = "Enemy: ";
+            this.lblEnemyName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // picEnemy
             // 
@@ -97,7 +97,7 @@ public partial class GameplayForm : Form
             this.EnemyHealthBar.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.EnemyHealthBar.Location = new System.Drawing.Point(536, 46);
             this.EnemyHealthBar.Name = "EnemyHealthBar";
-            this.EnemyHealthBar.Size = new System.Drawing.Size(331, 23);
+            this.EnemyHealthBar.Size = new System.Drawing.Size(425, 23);
             this.EnemyHealthBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.EnemyHealthBar.TabIndex = 8;
             // 
@@ -105,9 +105,9 @@ public partial class GameplayForm : Form
             // 
             this.playerHealthBar.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.playerHealthBar.BackColor = System.Drawing.SystemColors.Control;
-            this.playerHealthBar.Location = new System.Drawing.Point(122, 46);
+            this.playerHealthBar.Location = new System.Drawing.Point(38, 46);
             this.playerHealthBar.Name = "playerHealthBar";
-            this.playerHealthBar.Size = new System.Drawing.Size(345, 23);
+            this.playerHealthBar.Size = new System.Drawing.Size(429, 23);
             this.playerHealthBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.playerHealthBar.TabIndex = 9;
             // 

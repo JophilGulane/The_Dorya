@@ -15,10 +15,10 @@ public partial class GameplayForm : Form
     {
         InitializeComponent();
         this.player = playerCharacter;
+        InitializePlayer();
         LoadEnemies();
         StartBattle();
     }
-
     private void LoadEnemies()
     {
         enemyList = new List<Enemy>
@@ -39,11 +39,6 @@ public partial class GameplayForm : Form
         {
             picPlayer.Image = Game_Character_GUI.Properties.Resources.MageIdle;
         }
-
-        lblPlayerName.Text = $"Player: {player.Name}";
-        playerHealthBar.Maximum = player.Health;
-        playerHealthBar.Value = player.Health;
-
         LoadNextEnemy();
     }
 
@@ -58,7 +53,8 @@ public partial class GameplayForm : Form
             enemyList.RemoveAt(index);  // Remove the picked enemy from the list
 
             // Update enemy display (name, health)
-            lblEnemyName.Text = $"Enemy: {currentEnemy.Name}";
+            lblEnemyName.Text = $"{currentEnemy.Name}";
+            lblEnemyName.ForeColor = Color.Red;
             EnemyHealthBar.Maximum = currentEnemy.Health; // Set max health
             EnemyHealthBar.Value = currentEnemy.Health;   // Start at full health
 
@@ -134,9 +130,7 @@ public partial class GameplayForm : Form
 
         if (currentEnemy.Health <= 0)
         {
-            picEnemy.Image = Game_Character_GUI.Properties.Resources.MageIdleEnemy; // Enemy Defeat GIF
             AddToBattleLog($"{currentEnemy.Name} defeated!", Color.Green);
-
             player.LevelUp();
             AddToBattleLog(player.LevelUp(), Color.Blue);
             StartBattle();
@@ -206,28 +200,27 @@ public partial class GameplayForm : Form
         picEnemy.Image = Game_Character_GUI.Properties.Resources.MageIdleEnemy;
         int damage = currentEnemy.Attack(player);
         int reducedDamage = player.Defend(damage);
-        ShowDamagePopup(reducedDamage, picPlayer);
+
         if (reducedDamage == 0)
         {
             AddToBattleLog($"{currentEnemy.Name} attacked blocked", Color.Green);
         }
         else
         {
+            player.Health -= reducedDamage;
             AddToBattleLog($"{currentEnemy.Name} attacks Player and deals {reducedDamage} damage!", Color.Gold);
         }
+        ShowDamagePopup(reducedDamage, picPlayer);
 
-        player.Health -= reducedDamage;
         UpdateHealthBar(playerHealthBar, player.Health);
 
         if (player.Health <= 0)
         {
-            picPlayer.Image = Game_Character_GUI.Properties.Resources.MageIdleEnemy;
             MessageBox.Show("You have been defeated!");
             Application.Exit();
             return;
         }
 
-        // After the attack, reset the enemy's GIF to their idle animation
         switch (currentEnemy.Name)
         {
             case "Goblin":
@@ -245,12 +238,20 @@ public partial class GameplayForm : Form
         }
     }
 
+    public void InitializePlayer()
+    {
+        lblPlayerName.Text = $"{player.Name}";
+        lblPlayerName.ForeColor = Color.White;
+        playerHealthBar.Maximum = player.Health;
+        playerHealthBar.Value = player.Health;
+    }
     public void UpdateHealthBar(ProgressBar healthBar, int currentHealth)
     {
-        if (currentHealth < 0) currentHealth = 0; // Prevent negative health
-        if (currentHealth > healthBar.Maximum) currentHealth = healthBar.Maximum; // Prevent overflow
+        if (currentHealth < 0) currentHealth = 0;
+        if (currentHealth > healthBar.Maximum) currentHealth = healthBar.Maximum;
         healthBar.Value = currentHealth;
     }
+
 
 
     private void btnCheckStats_Click(object sender, EventArgs e)
@@ -264,6 +265,6 @@ public partial class GameplayForm : Form
         battleLog.AppendText(message + Environment.NewLine);
         battleLog.Select(start, message.Length);
         battleLog.SelectionColor = textColor;
-        battleLog.Select(battleLog.TextLength, 0); // Deselect text
+        battleLog.Select(battleLog.TextLength, 0);
     }
 }

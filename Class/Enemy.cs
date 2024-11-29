@@ -28,9 +28,6 @@ namespace Game_Character_GUI.Class
         public int Attack(GameCharacter target)
         {
             int damage = this.AttackPower;
-
-            Console.WriteLine($"{Name} attacks with {damage} damage!");
-
             return damage;
         }
     }
