@@ -36,7 +36,7 @@ namespace Game_Character_GUI.Class
         public int Stamina
         {
             get => stamina;
-            private set
+            set
             {
                 if (value >= 0)
                     stamina = value;
@@ -82,17 +82,18 @@ namespace Game_Character_GUI.Class
             return ($"<--- {Name} leveled up! New stats --->\n" +
                     $"Level: {Level} --> {++Level}\n" +
                     $"Intelligence: {Strength} --> {Strength += 2}\n" +
-                    $"Mana: {Stamina} --> {Stamina += 10}\n" +
+                    $"Stamina: {Stamina} --> {Stamina += 10}\n" +
                     $"SpellPower: {AttackDamage} --> {AttackDamage += 3}");
         }
 
         public override string CheckStats()
         {
             return ($"Names: {Name}\n" +
-                   $"Level: {Level}\n" +
-                   $"Strength: {Strength}\n" +
-                   $"Health: {Health}\n" +
-                   $"AttackDamage: {AttackDamage}") + "\n";
+                    $"Level: {Level}\n" +
+                    $"Health: {Health}\n" +
+                    $"AttackDamage: {AttackDamage}") + "\n" +
+                    $"Strength: {Strength}\n" +
+                    $"Stamina: {Stamina}\n";
 
         }
 

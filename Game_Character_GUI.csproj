@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameObjects\CustomProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Class\Enemy.cs" />
     <Compile Include="Class\GameCharacter.cs" />
     <Compile Include="Class\Mage.cs" />
@@ -71,6 +74,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GameObjects\CustomProgressBar.resx">
+      <DependentUpon>CustomProgressBar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GameMenu.resx">
       <DependentUpon>GameMenu.cs</DependentUpon>
     </EmbeddedResource>

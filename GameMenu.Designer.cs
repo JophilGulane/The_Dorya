@@ -112,7 +112,7 @@
             this.picMage.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.picMage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.picMage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picMage.Image = ((System.Drawing.Image)(resources.GetObject("picMage.Image")));
+            this.picMage.Image = global::Game_Character_GUI.Properties.Resources.MageIdle;
             this.picMage.Location = new System.Drawing.Point(568, 174);
             this.picMage.Name = "picMage";
             this.picMage.Size = new System.Drawing.Size(184, 154);

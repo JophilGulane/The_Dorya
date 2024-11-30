@@ -1,11 +1,9 @@
-﻿using Game_Character_GUI.Class;
-using Game_Character_GUI;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using System;
-using System.Drawing;
-using System.Diagnostics;
+﻿using Game_Character_GUI;
 using Game_Character_GUI.Class;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
 
 public partial class GameplayForm : Form
 {
@@ -15,7 +13,7 @@ public partial class GameplayForm : Form
     public GameplayForm(GameCharacter playerCharacter)
     {
         InitializeComponent();
-        this.player = playerCharacter;
+        player = playerCharacter;
         InitializePlayer();
         LoadEnemies();
         StartBattle();
@@ -47,20 +45,19 @@ public partial class GameplayForm : Form
     {
         if (enemyList.Count > 0)
         {
-            // Randomly pick an enemy from the list
             Random random = new Random();
             int index = random.Next(enemyList.Count);
             currentEnemy = enemyList[index];
-            enemyList.RemoveAt(index);  // Remove the picked enemy from the list
+            enemyList.RemoveAt(index);
 
-            // Update enemy display (name, health)
             lblEnemyName.Text = $"{currentEnemy.Name}";
             lblEnemyName.ForeColor = Color.Red;
-            EnemyHealthBar.Maximum = currentEnemy.Health; // Set max health
-            EnemyHealthBar.Value = currentEnemy.Health;   // Start at full health
+            EnemyHealthBar.Maximum = currentEnemy.Health;
+            EnemyHealthBar.Value = currentEnemy.Health;
+            EnemyHealthBar.ProgressColor = Color.Red;
+ 
 
 
-            // Set the correct idle animation for the current enemy
             switch (currentEnemy.Name)
             {
                 case "Goblin":
@@ -73,14 +70,14 @@ public partial class GameplayForm : Form
                     picEnemy.Image = Game_Character_GUI.Properties.Resources.MageIdleEnemy;
                     break;
                 default:
-                    picEnemy.Image = Game_Character_GUI.Properties.Resources.MageIdleEnemy; // Default GIF if no match
+                    picEnemy.Image = Game_Character_GUI.Properties.Resources.MageIdleEnemy;
                     break;
             }
         }
         else
         {
             MessageBox.Show("You have defeated all the enemies! Congratulations!");
-            this.Close(); // End the game or return to the main menu
+            this.Close();
         }
     }
 
@@ -198,6 +195,10 @@ public partial class GameplayForm : Form
 
     private void EnemyTurn()
     {
+        Timer DelayEnemyAttack = new Timer();
+
+        DelayEnemyAttack.Interval = 3000;
+        DelayEnemyAttack.Start();
         picEnemy.Image = Game_Character_GUI.Properties.Resources.MageIdleEnemy;
         int damage = currentEnemy.Attack(player);
         int reducedDamage = player.Defend(damage);
@@ -245,6 +246,19 @@ public partial class GameplayForm : Form
         lblPlayerName.ForeColor = Color.White;
         playerHealthBar.Maximum = player.Health;
         playerHealthBar.Value = player.Health;
+        if (player is Warrior warrior)
+        {
+            energyBar.Value = warrior.Stamina;
+            energyBar.Maximum = warrior.Stamina;
+            energyBar.ProgressColor = Color.Orange;
+        }
+        else if (player is Mage mage)
+        {
+            energyBar.Value = mage.Mana;
+            energyBar.Maximum = mage.Mana;
+            energyBar.ProgressColor = Color.Blue;
+        }
+
     }
     public void UpdateHealthBar(ProgressBar healthBar, int currentHealth)
     {
@@ -252,8 +266,6 @@ public partial class GameplayForm : Form
         if (currentHealth > healthBar.Maximum) currentHealth = healthBar.Maximum;
         healthBar.Value = currentHealth;
     }
-
-
 
     private void btnCheckStats_Click(object sender, EventArgs e)
     {
@@ -268,14 +280,209 @@ public partial class GameplayForm : Form
         battleLog.SelectionColor = textColor;
         battleLog.Select(battleLog.TextLength, 0);
     }
-    private void GameplayForm_Load_1(object sender, EventArgs e)
-    {
 
+    private void BtnBasicAttack_Click(object sender, EventArgs e)
+    {
+        int damage = SkillData.CurrentPlayer.UseResortSkill();
+        int energyCost = SkillData.CurrentPlayer.EnergyCost;
+        AddToBattleLog(energyCost.ToString(), Color.Red);
+        if (player is Warrior warrior)
+        {
+            if (warrior.Stamina >= energyCost)
+            {
+                Txt_Test.Text = damage.ToString() + SkillData.CurrentPlayer.Name;
+                warrior.Stamina -= energyCost;
+                Txt_Test.Text = energyCost.ToString() + SkillData.CurrentPlayer.Name;
+                UpdateEnergyBar(energyBar, warrior.Stamina);
+                AttackEnemy(damage);
+            }
+            else
+            {
+                Txt_Test.Text = "Not enough stamina";
+            }
+        }
+        else if (player is Mage mage)
+        {
+            if (mage.Mana >= energyCost)
+            {
+                Txt_Test.Text = damage.ToString() + SkillData.CurrentPlayer.Name;
+                mage.Mana -= energyCost;
+                Txt_Test.Text = energyCost.ToString() + SkillData.CurrentPlayer.Name;
+                UpdateEnergyBar(energyBar, mage.Mana);
+                AttackEnemy(damage);
+
+            }
+            else
+            {
+                Txt_Test.Text = "Not enough stamina";
+            }
+        }
     }
 
-    private void Btn_Test_Click(object sender, EventArgs e)
+    private void energyBar_Click(object sender, EventArgs e)
+    {
+        energyBar.ForeColor = Color.White;
+    }
+
+    public void UpdateEnergyBar(ProgressBar energyBar, int currentEnergy)
+    {
+        if (currentEnergy < 0) currentEnergy = 0;
+        if (currentEnergy > energyBar.Maximum) currentEnergy = energyBar.Maximum;
+        energyBar.Value = currentEnergy;
+    }
+
+    private void btnSkillOne_Click(object sender, EventArgs e)
     {
         int damage = SkillData.CurrentPlayer.UseBasicSkill();
-        Txt_Test.Text = damage.ToString() + SkillData.CurrentPlayer.Name;
+        int energyCost = SkillData.CurrentPlayer.EnergyCost;
+        if (player is Warrior warrior)
+        {
+            if (warrior.Stamina >= energyCost)
+            {
+                Txt_Test.Text = damage.ToString() + SkillData.CurrentPlayer.Name;
+                warrior.Stamina -= energyCost;
+                Txt_Test.Text = energyCost.ToString() + SkillData.CurrentPlayer.Name;
+                UpdateEnergyBar(energyBar, warrior.Stamina);
+                AttackEnemy(damage);
+            }
+            else
+            {
+                Txt_Test.Text = "Not enough stamina";
+            }
+        }
+        else if (player is Mage mage)
+        {
+            if (mage.Mana >= energyCost)
+            {
+                Txt_Test.Text = damage.ToString() + SkillData.CurrentPlayer.Name;
+                mage.Mana -= energyCost;
+                Txt_Test.Text = energyCost.ToString() + SkillData.CurrentPlayer.Name;
+                UpdateEnergyBar(energyBar, mage.Mana);
+                AttackEnemy(damage);
+
+            }
+            else
+            {
+                Txt_Test.Text = "Not enough stamina";
+            }
+        }
+    }
+
+    private void btnSkillTwo_Click(object sender, EventArgs e)
+    {
+        int damage = SkillData.CurrentPlayer.UseUltimateSkill();
+        int energyCost = SkillData.CurrentPlayer.EnergyCost;
+        if (player is Warrior warrior)
+        {
+            if (warrior.Stamina >= energyCost)
+            {
+                Txt_Test.Text = damage.ToString() + SkillData.CurrentPlayer.Name;
+                warrior.Stamina -= energyCost;
+                Txt_Test.Text = energyCost.ToString() + SkillData.CurrentPlayer.Name;
+                UpdateEnergyBar(energyBar, warrior.Stamina);
+                AttackEnemy(damage);
+            }
+            else
+            {
+                Txt_Test.Text = "Not enough stamina";
+            }
+        }
+        else if (player is Mage mage)
+        {
+            if (mage.Mana >= energyCost)
+            {
+                Txt_Test.Text = damage.ToString() + SkillData.CurrentPlayer.Name;
+                mage.Mana -= energyCost;
+                Txt_Test.Text = energyCost.ToString() + SkillData.CurrentPlayer.Name;
+                UpdateEnergyBar(energyBar, mage.Mana);
+                AttackEnemy(damage);
+
+            }
+            else
+            {
+                Txt_Test.Text = "Not enough stamina";
+            }
+        }
+    }
+
+    private void btnBuff_Click(object sender, EventArgs e)
+    {
+        int buff = SkillData.CurrentPlayer.UseBuffSkill();
+        int energyCost = SkillData.CurrentPlayer.EnergyCost;
+        if (player is Warrior warrior)
+        {
+            if (warrior.Stamina >= energyCost)
+            {
+                Txt_Test.Text = buff.ToString() + SkillData.CurrentPlayer.Name;
+                warrior.Stamina -= energyCost;
+                Txt_Test.Text = energyCost.ToString() + SkillData.CurrentPlayer.Name;
+                UpdateEnergyBar(energyBar, warrior.Stamina);
+            }
+            else
+            {
+                Txt_Test.Text = "Not enough stamina";
+            }
+        }
+        else if (player is Mage mage)
+        {
+            if (mage.Mana >= energyCost)
+            {
+                Txt_Test.Text = buff.ToString() + SkillData.CurrentPlayer.Name;
+                mage.Mana -= energyCost;
+                Txt_Test.Text = energyCost.ToString() + SkillData.CurrentPlayer.Name;
+                UpdateEnergyBar(energyBar, mage.Mana);
+            }
+            else
+            {
+                Txt_Test.Text = "Not enough stamina";
+            }
+        }
+    }
+
+    private void AttackEnemy(int damage)
+    {
+            currentEnemy.TakeDamage(damage);
+            AddToBattleLog($"Player attacks {currentEnemy.Name} using {SkillData.CurrentPlayer.Name} for {damage} damage", Color.Red);
+            ShowDamagePopup(damage, picEnemy);
+            picPlayer.Image = Game_Character_GUI.Properties.Resources.WarriorAttack;
+
+
+        UpdateHealthBar(EnemyHealthBar, currentEnemy.Health);
+
+        Timer animationTimer = new Timer();
+
+
+        if (GameMenu.CharacterType == "Warrior")
+        {
+            animationTimer.Interval = 3000;
+        }
+        else if (GameMenu.CharacterType == "Mage")
+        {
+            animationTimer.Interval = 6000;
+        }
+        animationTimer.Tick += (s, ev) =>
+        {
+            if (player is Warrior)
+                picPlayer.Image = Game_Character_GUI.Properties.Resources.WarriorIdle;
+            else if (player is Mage)
+                picPlayer.Image = Game_Character_GUI.Properties.Resources.MageIdle;
+            animationTimer.Stop();
+            animationTimer.Dispose();
+        };
+        animationTimer.Start();
+
+
+        if (currentEnemy.Health <= 0)
+        {
+            AddToBattleLog($"{currentEnemy.Name} defeated!", Color.Green);
+            player.LevelUp();
+            AddToBattleLog(player.LevelUp(), Color.Blue);
+            StartBattle();
+        }
+        else
+        {
+            EnemyTurn();
+        }
+
     }
 }

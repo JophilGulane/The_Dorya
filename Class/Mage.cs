@@ -36,7 +36,7 @@ namespace Game_Character_GUI.Class
         public int Mana
         {
             get => mana;
-            private set
+            set
             {
                 if (value >= 0)
                     mana = value;
@@ -89,9 +89,10 @@ namespace Game_Character_GUI.Class
         {
             return ($"Names: {Name}\n" +
                    $"Level: {Level}\n" +
-                   $"Intelligence: {Intelligence}\n" +
                    $"Health: {Health}\n" +
-                   $"AttackPower: {AttackPower}") + "\n";
+                   $"AttackPower: {AttackPower}\n" +
+                   $"Intelligence: {Intelligence}\n" +
+                   $"Mana: {Mana}") + "\n";
 
         }
     }

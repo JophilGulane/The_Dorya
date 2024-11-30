@@ -9,8 +9,7 @@ namespace Game_Character_GUI.Class
     public abstract class Skills
     {
         private string _name;
-        private int _manaCost;
-        private int _staminaCost;
+        private int _energyCost;
         private int _damage;
         private int _buff;
         private string _description;
@@ -18,30 +17,21 @@ namespace Game_Character_GUI.Class
         public string Name
         {
             get => _name;
-            protected set => _name = value;
+            set => _name = value;
         }
-        public int ManaCost
+        public int EnergyCost
         {
-            get => _manaCost;
-            protected set
+            get => _energyCost;
+            set
             {
-                if (value > 0)
-                    _manaCost = value;
-            }
-        }
-        public int StaminaCost
-        {
-            get => _staminaCost;
-            protected set
-            {
-                if (value > 0)
-                    _staminaCost = value;
+                if (value >= 0)
+                    _energyCost = value;
             }
         }
         public int Damage
         {
             get => _damage;
-            protected set
+            set
             {
                 if (value > 0)
                     _damage = value;
@@ -50,7 +40,7 @@ namespace Game_Character_GUI.Class
         public int Buff
         {
             get => _buff;
-            protected set
+            set
             {
                 if (value > 0)
                     _buff = value;
@@ -59,13 +49,12 @@ namespace Game_Character_GUI.Class
         public string Description
         {
             get => _description;
-            protected set => _description = value;
+            set => _description = value;
         }
-        public Skills(string _name, int _manaCost, int _staminaCost, int _damage, int buff, string _description)
+        public Skills(string _name, int _energyCost, int _damage, int buff, string _description)
         {
             Name = _name;
-            ManaCost = _manaCost;
-            StaminaCost = _staminaCost;
+            EnergyCost = _energyCost;
             Damage = _damage;
             Buff = _buff;
             Description = _description;

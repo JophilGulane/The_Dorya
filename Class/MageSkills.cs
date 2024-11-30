@@ -8,15 +8,14 @@ namespace Game_Character_GUI.Class
 {
     public class MageSkills : Skills
     {
-        public MageSkills() : base("", 0, 0, 0, 0, "")
+        public MageSkills() : base("", 0, 0, 0, "")
         {
 
         }
         public override int UseBasicSkill()
         {
             Name = "Fire ball";
-            ManaCost = 10;
-            StaminaCost = 0;
+            EnergyCost = 10;
             Damage = 30;
             Buff = 0;
             Description = "Mage's basic attack.";
@@ -25,8 +24,7 @@ namespace Game_Character_GUI.Class
         public override int UseUltimateSkill()
         {
             Name = "Explosion";
-            ManaCost = 20;
-            StaminaCost = 0;
+            EnergyCost = 20;
             Damage = 80;
             Buff = 0;
             Description = "Mage's ultimate attack.";
@@ -35,8 +33,7 @@ namespace Game_Character_GUI.Class
         public override int UseResortSkill()
         {
             Name = "Stick Pummel";
-            ManaCost = 0;
-            StaminaCost = 0;
+            EnergyCost = 0;
             Damage = 20;
             Buff = 0;
             Description = "No more mister nice guy.";
@@ -45,8 +42,7 @@ namespace Game_Character_GUI.Class
         public override int UseBuffSkill()
         {
             Name = "Armament Enchant";
-            ManaCost = 20;
-            StaminaCost = 0;
+            EnergyCost = 20;
             Damage = 0;
             Buff = 20;
             Description = "Imagine if I had a real weapon.";
