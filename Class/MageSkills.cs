@@ -8,7 +8,7 @@ namespace Game_Character_GUI.Class
 {
     public class MageSkills : Skills
     {
-        public MageSkills() : base("", 0, 0, 0, "")
+        public MageSkills(string _name, int _energyCost, int _damage, int _buff, string _description) : base(_name, _energyCost, _damage, _buff, _description)
         {
 
         }

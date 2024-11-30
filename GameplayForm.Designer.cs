@@ -29,10 +29,10 @@ public partial class GameplayForm : Form
             this.btnBuff = new System.Windows.Forms.Button();
             this.lblScore = new System.Windows.Forms.Label();
             this.lblEnemyHealth = new System.Windows.Forms.Label();
+            this.lblPlayerHealth = new System.Windows.Forms.Label();
             this.playerHealthBar = new CustomProgressBar();
             this.energyBar = new CustomProgressBar();
             this.EnemyHealthBar = new CustomProgressBar();
-            this.lblPlayerHealth = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picPlayer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEnemy)).BeginInit();
             this.SuspendLayout();
@@ -195,6 +195,19 @@ public partial class GameplayForm : Form
             this.lblEnemyHealth.Text = "Enemy Health";
             this.lblEnemyHealth.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lblPlayerHealth
+            // 
+            this.lblPlayerHealth.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblPlayerHealth.BackColor = System.Drawing.Color.Transparent;
+            this.lblPlayerHealth.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPlayerHealth.ForeColor = System.Drawing.Color.White;
+            this.lblPlayerHealth.Location = new System.Drawing.Point(40, 9);
+            this.lblPlayerHealth.Name = "lblPlayerHealth";
+            this.lblPlayerHealth.Size = new System.Drawing.Size(96, 27);
+            this.lblPlayerHealth.TabIndex = 24;
+            this.lblPlayerHealth.Text = "Enemy Health";
+            this.lblPlayerHealth.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // playerHealthBar
             // 
             this.playerHealthBar.Location = new System.Drawing.Point(44, 39);
@@ -215,25 +228,13 @@ public partial class GameplayForm : Form
             // 
             // EnemyHealthBar
             // 
+            this.EnemyHealthBar.Cursor = System.Windows.Forms.Cursors.Default;
             this.EnemyHealthBar.Location = new System.Drawing.Point(572, 39);
             this.EnemyHealthBar.Name = "EnemyHealthBar";
             this.EnemyHealthBar.ProgressColor = System.Drawing.Color.Red;
             this.EnemyHealthBar.Size = new System.Drawing.Size(389, 37);
             this.EnemyHealthBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.EnemyHealthBar.TabIndex = 19;
-            // 
-            // lblPlayerHealth
-            // 
-            this.lblPlayerHealth.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblPlayerHealth.BackColor = System.Drawing.Color.Transparent;
-            this.lblPlayerHealth.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlayerHealth.ForeColor = System.Drawing.Color.White;
-            this.lblPlayerHealth.Location = new System.Drawing.Point(40, 9);
-            this.lblPlayerHealth.Name = "lblPlayerHealth";
-            this.lblPlayerHealth.Size = new System.Drawing.Size(96, 27);
-            this.lblPlayerHealth.TabIndex = 24;
-            this.lblPlayerHealth.Text = "Enemy Health";
-            this.lblPlayerHealth.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // GameplayForm
             // 

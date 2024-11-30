@@ -95,7 +95,6 @@ namespace Game_Character_GUI.Class
                     $"AttackDamage: {AttackDamage}") + "\n" +
                     $"Strength: {Strength}\n" +
                     $"Stamina: {Stamina}\n";
-
         }
 
     }

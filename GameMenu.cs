@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using Game_Character_GUI.Class;
 
@@ -66,19 +67,16 @@ namespace Game_Character_GUI
         private void picMage_Click(object sender, EventArgs e)
         {
             CharacterType = "Mage";
-            SkillData.CurrentPlayer = new MageSkills();
+            SkillData.CurrentPlayer = new MageSkills("", 0, 0, 0, "");
             HighlightSelection(picMage);
         }
 
         private void HighlightSelection(PictureBox selectedPictureBox)
         {
-            picMage.BorderStyle = BorderStyle.None;
-            picWarrior.BorderStyle = BorderStyle.None;
-            picMage.BackColor = default;
-            picWarrior.BackColor = default;
+            picMage.BackColor = Color.Gray;
+            picWarrior.BackColor = Color.Gray;
 
-            selectedPictureBox.BorderStyle = BorderStyle.Fixed3D;
-            selectedPictureBox.BackColor = System.Drawing.Color.Red;
+            selectedPictureBox.BackColor = System.Drawing.Color.DeepPink;
         }
     }
 }
