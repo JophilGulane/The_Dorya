@@ -53,7 +53,7 @@ namespace Game_Character_GUI.Class
         {
             Name = _name;
             Level = _level;
-            Health = _health;
+            Health = _health * _level;
             Defense = _defense;
         }
 

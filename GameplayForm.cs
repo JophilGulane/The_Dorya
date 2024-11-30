@@ -11,9 +11,13 @@ public partial class GameplayForm : Form
     private Enemy currentEnemy;
     private List<Enemy> enemyList;
 
-    //Animations
+    //Warrior Animations
     private Image WarriorIdle = Game_Character_GUI.Properties.Resources.WarriorIdle;
+    private Image WarriorAttack = Game_Character_GUI.Properties.Resources.WarriorAttack;
+
+    //Mage Animations
     private Image MageIdle = Game_Character_GUI.Properties.Resources.MageIdle;
+    private Image MageAttack = Game_Character_GUI.Properties.Resources.MageAttack;
 
     //Score
     private int Score = 0;
@@ -25,17 +29,13 @@ public partial class GameplayForm : Form
         StartBattle();
     }
 
-    private void InitializeAnimations()
-    {
-
-    }
-    private void LoadEnemies()
+    private void LoadEnemies(int Level)
     {
         enemyList = new List<Enemy>
         {
-            new Enemy("Goblin", 1, 100, 10),
-            new Enemy("Orc", 1, 125, 15),
-            new Enemy("Dragon", 1, 150, 20)
+            new Enemy("Goblin", Level, 100, 10),
+            new Enemy("Orc", Level, 125, 15),
+            new Enemy("Dragon", Level, 150, 20)
         };
     }
 
@@ -49,24 +49,28 @@ public partial class GameplayForm : Form
         {
             picPlayer.Image = MageIdle;
         }
-        LoadEnemies();
         LoadNextEnemy();
     }
 
     private void LoadNextEnemy()
     {
+
         Random random = new Random();
-        int EnemyLevel = random.Next(player.Level / 2, player.Level);
+        int EnemyLevel = random.Next((player.Level + 1) / 2, player.Level);
+        LoadEnemies(EnemyLevel);
         int index = random.Next(enemyList.Count);
         currentEnemy = enemyList[index];
         currentEnemy.Level = EnemyLevel;
 
         lblEnemyName.Text = $"{currentEnemy.Name} lvl. {currentEnemy.Level}";
         lblEnemyName.ForeColor = Color.Red;
+
         EnemyHealthBar.Maximum = currentEnemy.Health;
         EnemyHealthBar.Value = currentEnemy.Health;
         EnemyHealthBar.ProgressColor = Color.Red;
- 
+        UpdateHealthBar(EnemyHealthBar, currentEnemy.Health);
+        lblEnemyHealth.Text = $"{currentEnemy.Health}/{EnemyHealthBar.Maximum}";
+
 
 
         switch (currentEnemy.Name)
@@ -83,64 +87,6 @@ public partial class GameplayForm : Form
             default:
                 picEnemy.Image = Game_Character_GUI.Properties.Resources.MageIdleEnemy;
                 break;
-        }
-    }
-
-    private void btnAttack_Click(object sender, EventArgs e)
-    {
-        int damage = 0;
-        if (player is Warrior warrior)
-        {
-            damage = warrior.Attack();
-            currentEnemy.TakeDamage(damage);
-            AddToBattleLog($"Player attacks {currentEnemy.Name} for {warrior.Attack()} damage", Color.Red);
-            ShowDamagePopup(damage, picEnemy);
-            picPlayer.Image = Game_Character_GUI.Properties.Resources.WarriorAttack;
-        }
-        else if (player is Mage mage)
-        {
-            damage = mage.Attack();
-            currentEnemy.TakeDamage(damage);
-            AddToBattleLog($"Player attacks {currentEnemy.Name} for {mage.Attack()} damage", Color.Red);
-            ShowDamagePopup(damage, picEnemy);
-            picPlayer.Image = Game_Character_GUI.Properties.Resources.MageAttack;
-        }
-
-
-        UpdateHealthBar(EnemyHealthBar, currentEnemy.Health);
-
-        Timer animationTimer = new Timer();
-
-
-        if (GameMenu.CharacterType == "Warrior")
-        {
-            animationTimer.Interval = 3000;
-        }
-        else if (GameMenu.CharacterType == "Mage")
-        {
-            animationTimer.Interval = 6000;
-        }
-        animationTimer.Tick += (s, ev) =>
-        {
-            if (player is Warrior)
-                picPlayer.Image = Game_Character_GUI.Properties.Resources.WarriorIdle;
-            else if (player is Mage)
-                picPlayer.Image = Game_Character_GUI.Properties.Resources.MageIdle;
-            animationTimer.Stop();
-            animationTimer.Dispose();
-        };
-        animationTimer.Start();
-
-        if (currentEnemy.Health <= 0)
-        {
-            AddToBattleLog($"{currentEnemy.Name} defeated!", Color.Green);
-            player.LevelUp();
-            AddToBattleLog(player.LevelUp(), Color.Blue);
-            StartBattle();
-        }
-        else
-        {
-            EnemyTurn();
         }
     }
 
@@ -220,6 +166,7 @@ public partial class GameplayForm : Form
         ShowDamagePopup(reducedDamage, picPlayer);
 
         UpdateHealthBar(playerHealthBar, player.Health);
+        lblPlayerHealth.Text = $"{player.Health}/{playerHealthBar.Maximum}";
 
         if (player.Health <= 0)
         {
@@ -253,6 +200,9 @@ public partial class GameplayForm : Form
         playerHealthBar.Maximum = player.Health;
         playerHealthBar.Value = player.Health;
         playerHealthBar.ProgressColor = Color.Green;
+        lblPlayerHealth.Text = $"{player.Health}/{playerHealthBar.Maximum}";
+
+        lblScore.Text = $"Score: {Score}";
         if (player is Warrior warrior)
         {
             energyBar.Value = warrior.Stamina;
@@ -290,7 +240,7 @@ public partial class GameplayForm : Form
 
     private void BtnBasicAttack_Click(object sender, EventArgs e)
     {
-        int damage = SkillData.CurrentPlayer.UseResortSkill();
+        int damage = SkillData.CurrentPlayer.UseResortSkill() * (player.Level + 1 / 2);
         int energyCost = SkillData.CurrentPlayer.EnergyCost;
         AddToBattleLog(energyCost.ToString(), Color.Red);
         if (player is Warrior warrior)
@@ -342,7 +292,7 @@ public partial class GameplayForm : Form
 
     private void btnSkillOne_Click(object sender, EventArgs e)
     {
-        int damage = SkillData.CurrentPlayer.UseBasicSkill();
+        int damage = SkillData.CurrentPlayer.UseBasicSkill() * (player.Level + 1 / 2);
         int energyCost = SkillData.CurrentPlayer.EnergyCost;
         if (player is Warrior warrior)
         {
@@ -379,7 +329,7 @@ public partial class GameplayForm : Form
 
     private void btnSkillTwo_Click(object sender, EventArgs e)
     {
-        int damage = SkillData.CurrentPlayer.UseUltimateSkill();
+        int damage = SkillData.CurrentPlayer.UseUltimateSkill() * (player.Level + 1 / 2);
         int energyCost = SkillData.CurrentPlayer.EnergyCost;
         if (player is Warrior warrior)
         {
@@ -416,7 +366,7 @@ public partial class GameplayForm : Form
 
     private void btnBuff_Click(object sender, EventArgs e)
     {
-        int buff = SkillData.CurrentPlayer.UseBuffSkill();
+        int buff = SkillData.CurrentPlayer.UseBuffSkill() * (player.Level + 1 / 2);
         int energyCost = SkillData.CurrentPlayer.EnergyCost;
         if (player is Warrior warrior)
         {
@@ -456,6 +406,7 @@ public partial class GameplayForm : Form
 
 
         UpdateHealthBar(EnemyHealthBar, currentEnemy.Health);
+        lblEnemyHealth.Text = $"{currentEnemy.Health}/{EnemyHealthBar.Maximum}";
 
         Timer animationTimer = new Timer();
 
@@ -482,11 +433,16 @@ public partial class GameplayForm : Form
 
         if (currentEnemy.Health <= 0)
         {
+            player.LevelUp();
+            playerHealthBar.Maximum = player.Health;
+            HealthRegen();
+            UpdateHealthBar(playerHealthBar, player.Health);
+            lblPlayerHealth.Text = $"{player.Health}/{playerHealthBar.Maximum}";
+
             AddScore();
             AddToBattleLog($"{currentEnemy.Name} defeated!", Color.Green);
-            player.LevelUp();
             lblPlayerName.Text = $"{player.Name} lvl. {player.Level}";
-            AddToBattleLog(player.LevelUp(), Color.Blue);
+            AddToBattleLog($"{player.Level - 1} --> {player.Level} ", Color.Blue);
             StartBattle();
         }
         else
@@ -500,5 +456,10 @@ public partial class GameplayForm : Form
     {
         Score += 1;
         lblScore.Text = $"Score: {Score.ToString()}";
+    }
+
+    private void HealthRegen()
+    {
+        player.Health = playerHealthBar.Maximum;
     }
 }

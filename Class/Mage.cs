@@ -79,6 +79,7 @@ namespace Game_Character_GUI.Class
         public override string LevelUp()
         {
             return ($"<--- {Name} leveled up! New stats --->\n" +
+                    $"Level: {Health} --> {Health *= Health}\n" +
                     $"Level: {Level} --> {++Level}\n" +
                     $"Intelligence: {Intelligence} --> {Intelligence += 2}\n" +
                     $"Mana: {Mana} --> {Mana += 10}\n" +

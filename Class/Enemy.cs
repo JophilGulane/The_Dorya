@@ -18,8 +18,8 @@ namespace Game_Character_GUI.Class
         {
             Name = name;
             Level = level;
-            Health = health * level;
-            AttackPower = attackPower * (level + 1 / 2);
+            Health = health * ((level + 1) / 2);
+            AttackPower = attackPower * ((level + 1) / 2);
         }
 
         public void TakeDamage(int damage)

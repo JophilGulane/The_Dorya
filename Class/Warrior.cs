@@ -81,6 +81,7 @@ namespace Game_Character_GUI.Class
         {
             return ($"<--- {Name} leveled up! New stats --->\n" +
                     $"Level: {Level} --> {++Level}\n" +
+                    $"Level: {Health} --> {Health = Health + 15 * Level}\n" +
                     $"Intelligence: {Strength} --> {Strength += 2}\n" +
                     $"Stamina: {Stamina} --> {Stamina += 10}\n" +
                     $"SpellPower: {AttackDamage} --> {AttackDamage += 3}");
