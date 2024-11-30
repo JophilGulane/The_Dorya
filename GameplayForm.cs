@@ -10,21 +10,32 @@ public partial class GameplayForm : Form
     private GameCharacter player;
     private Enemy currentEnemy;
     private List<Enemy> enemyList;
+
+    //Animations
+    private Image WarriorIdle = Game_Character_GUI.Properties.Resources.WarriorIdle;
+    private Image MageIdle = Game_Character_GUI.Properties.Resources.MageIdle;
+
+    //Score
+    private int Score = 0;
     public GameplayForm(GameCharacter playerCharacter)
     {
         InitializeComponent();
         player = playerCharacter;
         InitializePlayer();
-        LoadEnemies();
         StartBattle();
+    }
+
+    private void InitializeAnimations()
+    {
+
     }
     private void LoadEnemies()
     {
         enemyList = new List<Enemy>
         {
-            new Enemy("Goblin", 100, 20),
-            new Enemy("Orc", 150, 30),
-            new Enemy("Dragon", 300, 50)
+            new Enemy("Goblin", 1, 100, 10),
+            new Enemy("Orc", 1, 125, 15),
+            new Enemy("Dragon", 1, 150, 20)
         };
     }
 
@@ -32,52 +43,46 @@ public partial class GameplayForm : Form
     {
         if (GameMenu.CharacterType == "Warrior")
         {
-            picPlayer.Image = Game_Character_GUI.Properties.Resources.WarriorIdle;
+            picPlayer.Image = WarriorIdle;
         }
         else if (GameMenu.CharacterType == "Mage")
         {
-            picPlayer.Image = Game_Character_GUI.Properties.Resources.MageIdle;
+            picPlayer.Image = MageIdle;
         }
+        LoadEnemies();
         LoadNextEnemy();
     }
 
     private void LoadNextEnemy()
     {
-        if (enemyList.Count > 0)
-        {
-            Random random = new Random();
-            int index = random.Next(enemyList.Count);
-            currentEnemy = enemyList[index];
-            enemyList.RemoveAt(index);
+        Random random = new Random();
+        int EnemyLevel = random.Next(player.Level / 2, player.Level);
+        int index = random.Next(enemyList.Count);
+        currentEnemy = enemyList[index];
+        currentEnemy.Level = EnemyLevel;
 
-            lblEnemyName.Text = $"{currentEnemy.Name}";
-            lblEnemyName.ForeColor = Color.Red;
-            EnemyHealthBar.Maximum = currentEnemy.Health;
-            EnemyHealthBar.Value = currentEnemy.Health;
-            EnemyHealthBar.ProgressColor = Color.Red;
+        lblEnemyName.Text = $"{currentEnemy.Name} lvl. {currentEnemy.Level}";
+        lblEnemyName.ForeColor = Color.Red;
+        EnemyHealthBar.Maximum = currentEnemy.Health;
+        EnemyHealthBar.Value = currentEnemy.Health;
+        EnemyHealthBar.ProgressColor = Color.Red;
  
 
 
-            switch (currentEnemy.Name)
-            {
-                case "Goblin":
-                    picEnemy.Image = Game_Character_GUI.Properties.Resources.MageIdleEnemy;
-                    break;
-                case "Orc":
-                    picEnemy.Image = Game_Character_GUI.Properties.Resources.MageIdleEnemy;
-                    break;
-                case "Dragon":
-                    picEnemy.Image = Game_Character_GUI.Properties.Resources.MageIdleEnemy;
-                    break;
-                default:
-                    picEnemy.Image = Game_Character_GUI.Properties.Resources.MageIdleEnemy;
-                    break;
-            }
-        }
-        else
+        switch (currentEnemy.Name)
         {
-            MessageBox.Show("You have defeated all the enemies! Congratulations!");
-            this.Close();
+            case "Goblin":
+                picEnemy.Image = Game_Character_GUI.Properties.Resources.MageIdleEnemy;
+                break;
+            case "Orc":
+                picEnemy.Image = Game_Character_GUI.Properties.Resources.MageIdleEnemy;
+                break;
+            case "Dragon":
+                picEnemy.Image = Game_Character_GUI.Properties.Resources.MageIdleEnemy;
+                break;
+            default:
+                picEnemy.Image = Game_Character_GUI.Properties.Resources.MageIdleEnemy;
+                break;
         }
     }
 
@@ -219,6 +224,7 @@ public partial class GameplayForm : Form
         if (player.Health <= 0)
         {
             MessageBox.Show("You have been defeated!");
+            MessageBox.Show($"Final Score is {Score}");
             Application.Exit();
             return;
         }
@@ -242,10 +248,11 @@ public partial class GameplayForm : Form
 
     public void InitializePlayer()
     {
-        lblPlayerName.Text = $"{player.Name}";
+        lblPlayerName.Text = $"{player.Name} lvl. {player.Level}";
         lblPlayerName.ForeColor = Color.White;
         playerHealthBar.Maximum = player.Health;
         playerHealthBar.Value = player.Health;
+        playerHealthBar.ProgressColor = Color.Green;
         if (player is Warrior warrior)
         {
             energyBar.Value = warrior.Stamina;
@@ -295,6 +302,7 @@ public partial class GameplayForm : Form
                 Txt_Test.Text = energyCost.ToString() + SkillData.CurrentPlayer.Name;
                 UpdateEnergyBar(energyBar, warrior.Stamina);
                 AttackEnemy(damage);
+                picPlayer.Image = Game_Character_GUI.Properties.Resources.WarriorAttack;
             }
             else
             {
@@ -310,6 +318,7 @@ public partial class GameplayForm : Form
                 Txt_Test.Text = energyCost.ToString() + SkillData.CurrentPlayer.Name;
                 UpdateEnergyBar(energyBar, mage.Mana);
                 AttackEnemy(damage);
+                picPlayer.Image = Game_Character_GUI.Properties.Resources.MageAttack;
 
             }
             else
@@ -444,7 +453,6 @@ public partial class GameplayForm : Form
             currentEnemy.TakeDamage(damage);
             AddToBattleLog($"Player attacks {currentEnemy.Name} using {SkillData.CurrentPlayer.Name} for {damage} damage", Color.Red);
             ShowDamagePopup(damage, picEnemy);
-            picPlayer.Image = Game_Character_GUI.Properties.Resources.WarriorAttack;
 
 
         UpdateHealthBar(EnemyHealthBar, currentEnemy.Health);
@@ -474,8 +482,10 @@ public partial class GameplayForm : Form
 
         if (currentEnemy.Health <= 0)
         {
+            AddScore();
             AddToBattleLog($"{currentEnemy.Name} defeated!", Color.Green);
             player.LevelUp();
+            lblPlayerName.Text = $"{player.Name} lvl. {player.Level}";
             AddToBattleLog(player.LevelUp(), Color.Blue);
             StartBattle();
         }
@@ -484,5 +494,11 @@ public partial class GameplayForm : Form
             EnemyTurn();
         }
 
+    }
+
+    private void AddScore()
+    {
+        Score += 1;
+        lblScore.Text = $"Score: {Score.ToString()}";
     }
 }

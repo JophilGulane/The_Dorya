@@ -9,14 +9,17 @@ namespace Game_Character_GUI.Class
     public class Enemy
     {
         public string Name { get; private set; }
+
+        public int Level { get; set; }
         public int Health { get; private set; }
         public int AttackPower { get; private set; }
 
-        public Enemy(string name, int health, int attackPower)
+        public Enemy(string name, int level, int health, int attackPower)
         {
             Name = name;
-            Health = health;
-            AttackPower = attackPower;
+            Level = level;
+            Health = health * level;
+            AttackPower = attackPower * (level + 1 / 2);
         }
 
         public void TakeDamage(int damage)
