@@ -213,6 +213,16 @@ namespace Game_Character_GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap MageFace {
+            get {
+                object obj = ResourceManager.GetObject("MageFace", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap MageHurt {
             get {
                 object obj = ResourceManager.GetObject("MageHurt", resourceCulture);
@@ -416,6 +426,16 @@ namespace Game_Character_GUI.Properties {
         public static System.Drawing.Bitmap WarriorDefend {
             get {
                 object obj = ResourceManager.GetObject("WarriorDefend", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap WarriorFace {
+            get {
+                object obj = ResourceManager.GetObject("WarriorFace", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

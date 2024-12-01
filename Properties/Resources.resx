@@ -241,4 +241,10 @@
   <data name="WarriorSkillTwo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Animations\SkillIcon\WarriorSkillTwo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="MageFace" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Animations\char\MageFace.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WarriorFace" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Animations\char\WarriorFace.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

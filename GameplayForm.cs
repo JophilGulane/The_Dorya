@@ -18,6 +18,8 @@ public partial class GameplayForm : Form
 
     private Timer enemyTurnTimer;
     private int enemyTurnDelay = 1000;
+    private bool isEnemyDead = false;
+
     public GameplayForm(GameCharacter playerCharacter)
     {
         InitializeComponent();
@@ -218,6 +220,7 @@ public partial class GameplayForm : Form
             btnSkillOne.Image = Game_Character_GUI.Properties.Resources.WarriorSkillOne;
             btnSkillTwo.Image = Game_Character_GUI.Properties.Resources.WarriorSkillTwo;
             btnBuff.Image = Game_Character_GUI.Properties.Resources.WarriorBuff;
+            btnCheckStats.Image = Game_Character_GUI.Properties.Resources.WarriorFace;
         }
         else if (GameMenu.CharacterType == "Mage")
         {
@@ -225,6 +228,7 @@ public partial class GameplayForm : Form
             btnSkillOne.Image = Game_Character_GUI.Properties.Resources.MageSkillOne;
             btnSkillTwo.Image = Game_Character_GUI.Properties.Resources.MageSkillTwo;
             btnBuff.Image = Game_Character_GUI.Properties.Resources.MageBuff;
+            btnCheckStats.Image = Game_Character_GUI.Properties.Resources.MageFace;
         }
 
         lblPlayerName.Text = $"{player.Name} lvl. {player.Level}";
@@ -283,62 +287,54 @@ public partial class GameplayForm : Form
 
 
     
-    private void ActivateSkill(string skill) 
+    private void ActivateSkill(string skill, int energyCost) 
     {
         int damage = 0;
-        int energyCost = 0;
         int buff = 0;
-        if (skill == "BasicAttack")
+        int playerEnergy = 0;
+        if (player is Warrior warrior)
+        {
+            playerEnergy = warrior.Stamina;
+        }
+        else if (player is Mage mage)
+        {
+            playerEnergy = mage.Mana;
+        }
+
+        if (skill == "BasicAttack" && playerEnergy >= energyCost)
         {
             damage = SkillData.CurrentPlayer.UseResortSkill() * (player.Level + 1 / 2);
             energyCost = SkillData.CurrentPlayer.EnergyCost;
         }
-        else if (skill == "SkillOne")
+        else if (skill == "SkillOne" && playerEnergy >= energyCost)
         {
             damage = SkillData.CurrentPlayer.UseBasicSkill() * (player.Level + 1 / 2);
             energyCost = SkillData.CurrentPlayer.EnergyCost;
         }
-        else if (skill == "SkillTwo")
+        else if (skill == "SkillTwo" && playerEnergy >= energyCost)
         {
             damage = SkillData.CurrentPlayer.UseUltimateSkill() * (player.Level + 1 / 2);
             energyCost = SkillData.CurrentPlayer.EnergyCost;
         }
-        else if (skill == "Buff")
+        else if (skill == "Buff" && playerEnergy >= energyCost)
         {
             buff = SkillData.CurrentPlayer.UseBuffSkill() * (player.Level + 1 / 2);
             energyCost = SkillData.CurrentPlayer.EnergyCost;
         }
 
-        if (player is Warrior warrior)
+        if (playerEnergy >= energyCost)
         {
-            if (warrior.Stamina >= energyCost)
-            {
-                warrior.Stamina -= energyCost;
-                UpdateEnergyBar(energyBar, warrior.Stamina);
-                PlayerAttack(damage);
-                EnemyHurt();
-            }
-            else
-            {
-                AddToBattleLog($"Not enough stamina", Color.Red);
-                ShowEffectPopup($"Not enough stamina", picPlayer);
-            }
+            playerEnergy -= energyCost;
+            UpdateEnergyBar(energyBar, playerEnergy);
+            PlayerAttack(damage);
+            EnemyHurt();
         }
-        else if (player is Mage mage)
+        else
         {
-            if (mage.Mana >= energyCost)
-            {
-                mage.Mana -= energyCost;
-                UpdateEnergyBar(energyBar, mage.Mana);
-                PlayerAttack(damage);
-                EnemyHurt();
-            }
-            else
-            {
-                AddToBattleLog($"Not enough mana", Color.Red);
-                ShowEffectPopup($"Not enough mana", picPlayer);
-            }
+            AddToBattleLog($"Not enough stamina", Color.Red);
+            ShowEffectPopup($"Not enough stamina", picPlayer);
         }
+
     }
 
     private void energyBar_Click(object sender, EventArgs e)
@@ -355,22 +351,22 @@ public partial class GameplayForm : Form
 
     private void btnBasicAttack_Click_1(object sender, EventArgs e)
     {
-        ActivateSkill("BasicAttack");
+        ActivateSkill("BasicAttack", 0);
     }
 
     private void btnSkillOne_Click(object sender, EventArgs e)
     {
-        ActivateSkill("SkillOne");
+        ActivateSkill("SkillOne", 10);
     }
 
     private void btnSkillTwo_Click(object sender, EventArgs e)
     {
-        ActivateSkill("SkillTwo");
+        ActivateSkill("SkillTwo", 20);
     }
 
     private void btnBuff_Click(object sender, EventArgs e)
     {
-        ActivateSkill("SkillTwo");
+        ActivateSkill("SkillTwo", 20);
     }
 
     private void PlayerAttack(int damage)
@@ -381,8 +377,10 @@ public partial class GameplayForm : Form
         UpdateHealthBar(EnemyHealthBar, currentEnemy.Health);
         PlayPlayerAttackAnimation();
 
+
         if (currentEnemy.Health <= 0)
         {
+            isEnemyDead = true;
             player.LevelUp();
             ShowEffectPopup("Leveled Up!", picPlayer);
             playerHealthBar.Maximum = player.Health;
@@ -393,6 +391,7 @@ public partial class GameplayForm : Form
             AddToBattleLog($"{currentEnemy.Name} defeated!", Color.Green);
             AddToBattleLog($"{player.Level - 1} --> {player.Level} ", Color.Blue);
             PlayEnemyDeathAnimation();
+
         }
         else
         {
@@ -429,10 +428,8 @@ public partial class GameplayForm : Form
     {
         EnemyDeath();
 
-        Timer enemyDeathTimer = new Timer
-        {
-            Interval = 3000
-        };
+        Timer enemyDeathTimer = new Timer();
+        enemyDeathTimer.Interval = 1500;
 
         enemyDeathTimer.Tick += (s, e) =>
         {
@@ -495,6 +492,8 @@ public partial class GameplayForm : Form
 
     private void EnemyHurt()
     {
+        if (isEnemyDead) return;
+
         switch (currentEnemy.Name)
         {
             case "Skeleton":
@@ -553,6 +552,18 @@ public partial class GameplayForm : Form
                 picEnemy.Image = Game_Character_GUI.Properties.Resources.OrcAttack;
                 break;
 
+        }
+    }
+
+    private void PlayerDeath()
+    {
+        if (GameMenu.CharacterType == "Warrior")
+        {
+            picPlayer.Image = Game_Character_GUI.Properties.Resources.FemaleWarriorDeath;
+        }
+        else if (GameMenu.CharacterType == "Mage")
+        {
+            picPlayer.Image = Game_Character_GUI.Properties.Resources.MageDeath;
         }
     }
 

@@ -49,7 +49,7 @@ namespace Game_Character_GUI.Class
                 {
                     using (SoundPlayer player = new SoundPlayer(filePath))
                     {
-                        player.PlaySync(); // Plays sound synchronously
+                        player.PlaySync();
                     }
                 }
                 catch (Exception ex)

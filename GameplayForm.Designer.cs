@@ -43,9 +43,9 @@ public partial class GameplayForm : Form
             this.lblPlayerName.BackColor = System.Drawing.Color.Transparent;
             this.lblPlayerName.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPlayerName.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblPlayerName.Location = new System.Drawing.Point(38, 14);
+            this.lblPlayerName.Location = new System.Drawing.Point(143, 14);
             this.lblPlayerName.Name = "lblPlayerName";
-            this.lblPlayerName.Size = new System.Drawing.Size(429, 23);
+            this.lblPlayerName.Size = new System.Drawing.Size(301, 23);
             this.lblPlayerName.TabIndex = 0;
             this.lblPlayerName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
@@ -64,12 +64,14 @@ public partial class GameplayForm : Form
             // 
             this.lblEnemyName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblEnemyName.BackColor = System.Drawing.Color.Transparent;
-            this.lblEnemyName.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEnemyName.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEnemyName.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblEnemyName.Location = new System.Drawing.Point(537, 13);
+            this.lblEnemyName.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblEnemyName.Location = new System.Drawing.Point(607, 160);
             this.lblEnemyName.Name = "lblEnemyName";
-            this.lblEnemyName.Size = new System.Drawing.Size(425, 23);
+            this.lblEnemyName.Size = new System.Drawing.Size(126, 23);
             this.lblEnemyName.TabIndex = 3;
+            this.lblEnemyName.Text = "Enemy lvl.999";
             this.lblEnemyName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // picEnemy
@@ -86,16 +88,17 @@ public partial class GameplayForm : Form
             // btnCheckStats
             // 
             this.btnCheckStats.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnCheckStats.BackColor = System.Drawing.Color.Transparent;
+            this.btnCheckStats.BackColor = System.Drawing.SystemColors.Control;
+            this.btnCheckStats.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnCheckStats.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnCheckStats.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnCheckStats.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCheckStats.Font = new System.Drawing.Font("Modern No. 20", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckStats.ForeColor = System.Drawing.Color.Red;
-            this.btnCheckStats.Location = new System.Drawing.Point(253, 114);
+            this.btnCheckStats.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.btnCheckStats.Image = global::Game_Character_GUI.Properties.Resources.WarriorFace;
+            this.btnCheckStats.Location = new System.Drawing.Point(25, 8);
             this.btnCheckStats.Name = "btnCheckStats";
-            this.btnCheckStats.Size = new System.Drawing.Size(100, 50);
+            this.btnCheckStats.Size = new System.Drawing.Size(100, 100);
             this.btnCheckStats.TabIndex = 10;
-            this.btnCheckStats.Text = "Check Status";
             this.btnCheckStats.UseVisualStyleBackColor = false;
             this.btnCheckStats.Click += new System.EventHandler(this.btnCheckStats_Click);
             // 
@@ -104,9 +107,9 @@ public partial class GameplayForm : Form
             this.battleLog.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.battleLog.BackColor = System.Drawing.Color.DarkCyan;
             this.battleLog.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.battleLog.Location = new System.Drawing.Point(772, 88);
+            this.battleLog.Location = new System.Drawing.Point(450, 39);
             this.battleLog.Name = "battleLog";
-            this.battleLog.Size = new System.Drawing.Size(189, 78);
+            this.battleLog.Size = new System.Drawing.Size(179, 69);
             this.battleLog.TabIndex = 11;
             this.battleLog.Text = "";
             // 
@@ -162,7 +165,7 @@ public partial class GameplayForm : Form
             this.lblScore.BackColor = System.Drawing.Color.Transparent;
             this.lblScore.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblScore.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblScore.Location = new System.Drawing.Point(450, 88);
+            this.lblScore.Location = new System.Drawing.Point(842, 8);
             this.lblScore.Name = "lblScore";
             this.lblScore.Size = new System.Drawing.Size(146, 55);
             this.lblScore.TabIndex = 22;
@@ -175,12 +178,12 @@ public partial class GameplayForm : Form
             this.lblEnemyHealth.BackColor = System.Drawing.Color.Transparent;
             this.lblEnemyHealth.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEnemyHealth.ForeColor = System.Drawing.Color.White;
-            this.lblEnemyHealth.Location = new System.Drawing.Point(866, 9);
+            this.lblEnemyHealth.Location = new System.Drawing.Point(724, 186);
             this.lblEnemyHealth.Name = "lblEnemyHealth";
-            this.lblEnemyHealth.Size = new System.Drawing.Size(96, 27);
+            this.lblEnemyHealth.Size = new System.Drawing.Size(261, 14);
             this.lblEnemyHealth.TabIndex = 23;
             this.lblEnemyHealth.Text = "Enemy Health";
-            this.lblEnemyHealth.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblEnemyHealth.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblPlayerHealth
             // 
@@ -188,7 +191,7 @@ public partial class GameplayForm : Form
             this.lblPlayerHealth.BackColor = System.Drawing.Color.Transparent;
             this.lblPlayerHealth.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPlayerHealth.ForeColor = System.Drawing.Color.White;
-            this.lblPlayerHealth.Location = new System.Drawing.Point(40, 9);
+            this.lblPlayerHealth.Location = new System.Drawing.Point(139, 8);
             this.lblPlayerHealth.Name = "lblPlayerHealth";
             this.lblPlayerHealth.Size = new System.Drawing.Size(96, 27);
             this.lblPlayerHealth.TabIndex = 24;
@@ -224,29 +227,29 @@ public partial class GameplayForm : Form
             // 
             // playerHealthBar
             // 
-            this.playerHealthBar.Location = new System.Drawing.Point(44, 39);
+            this.playerHealthBar.Location = new System.Drawing.Point(143, 39);
             this.playerHealthBar.Name = "playerHealthBar";
             this.playerHealthBar.ProgressColor = System.Drawing.Color.Red;
-            this.playerHealthBar.Size = new System.Drawing.Size(400, 30);
+            this.playerHealthBar.Size = new System.Drawing.Size(301, 30);
             this.playerHealthBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.playerHealthBar.TabIndex = 21;
             // 
             // energyBar
             // 
-            this.energyBar.Location = new System.Drawing.Point(44, 88);
+            this.energyBar.Location = new System.Drawing.Point(143, 88);
             this.energyBar.Name = "energyBar";
             this.energyBar.ProgressColor = System.Drawing.Color.Red;
-            this.energyBar.Size = new System.Drawing.Size(400, 20);
+            this.energyBar.Size = new System.Drawing.Size(301, 20);
             this.energyBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.energyBar.TabIndex = 20;
             // 
             // EnemyHealthBar
             // 
             this.EnemyHealthBar.Cursor = System.Windows.Forms.Cursors.Default;
-            this.EnemyHealthBar.Location = new System.Drawing.Point(572, 39);
+            this.EnemyHealthBar.Location = new System.Drawing.Point(607, 186);
             this.EnemyHealthBar.Name = "EnemyHealthBar";
             this.EnemyHealthBar.ProgressColor = System.Drawing.Color.Red;
-            this.EnemyHealthBar.Size = new System.Drawing.Size(389, 37);
+            this.EnemyHealthBar.Size = new System.Drawing.Size(236, 14);
             this.EnemyHealthBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.EnemyHealthBar.TabIndex = 19;
             // 

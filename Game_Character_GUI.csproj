@@ -152,7 +152,7 @@
     <Content Include="Animations\char\bowman\sprite-sheet-b-158x173.png" />
     <Content Include="Animations\char\mage\attack.gif" />
     <Content Include="Animations\char\mage\attack2.gif" />
-    <Content Include="Animations\char\mage\faceset-b.png" />
+    <Content Include="Animations\char\WarriorFace.png" />
     <Content Include="Animations\char\mage\faceset.png" />
     <Content Include="Animations\char\mage\hit.gif" />
     <Content Include="Animations\char\mage\idle.gif" />
@@ -161,7 +161,7 @@
     <Content Include="Animations\char\paladin\attack.gif" />
     <Content Include="Animations\char\paladin\attack2.gif" />
     <Content Include="Animations\char\paladin\faceset-b.png" />
-    <Content Include="Animations\char\paladin\faceset.png" />
+    <Content Include="Animations\char\MageFace.png" />
     <Content Include="Animations\char\paladin\hit.gif" />
     <Content Include="Animations\char\paladin\idle.gif" />
     <Content Include="Animations\char\paladin\sprite-sheet-249x100.png" />

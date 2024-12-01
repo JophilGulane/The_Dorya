@@ -82,10 +82,10 @@ namespace Game_Character_GUI.Class
             PlaySound(@"SoundFX\LevelUpSound.wav");
             return ($"<--- {Name} leveled up! New stats --->\n" +
                     $"Level: {Level} --> {++Level}\n" +
-                    $"Health: {Health} --> {Health = (10 * Level)}\n" +
+                    $"Health: {Health} --> {Health += (10 * Level)}\n" +
                     $"Intelligence: {Intelligence} --> {Intelligence += 2}\n" +
                     $"Mana: {Mana} --> {Mana += 10}\n" +
-                    $"SpellPower: {AttackPower} --> {AttackPower += 3}");
+                    $"SpellPower: {AttackPower} --> {AttackPower += 2}");
         }
 
         public override string CheckStats()
