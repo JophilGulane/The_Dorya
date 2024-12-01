@@ -183,7 +183,6 @@ public partial class GameplayForm : Form
     }
     public void UpdateHealthBar(ProgressBar healthBar, int currentHealth)
     {
-        playerHealthBar.Maximum = player.Health;
         if (currentHealth < 0) currentHealth = 0;
         if (currentHealth > healthBar.Maximum) currentHealth = healthBar.Maximum;
         healthBar.Value = currentHealth;
@@ -312,6 +311,7 @@ public partial class GameplayForm : Form
         if (currentEnemy.Health <= 0)
         {
             player.LevelUp();
+            playerHealthBar.Maximum = player.Health;
             lblPlayerName.Text = $"{player.Name} lvl. {player.Level}";
             UpdateHealthBar(playerHealthBar, player.Health);
             HealthRegen();
@@ -464,7 +464,6 @@ public partial class GameplayForm : Form
         PlayEnemyAttackAnimation();
         int damage = currentEnemy.Attack(player);
         int reducedDamage = player.Defend(damage);
-        player.Health -= damage;
 
         if (reducedDamage == 0)
         {
