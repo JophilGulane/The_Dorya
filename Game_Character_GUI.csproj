@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\SoundSystem.cs" />
     <Compile Include="GameObjects\CustomProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -182,6 +183,45 @@
     <Content Include="Animations\char\warrior\idle.gif" />
     <Content Include="Animations\char\warrior\sprite-sheet-240x104.png" />
     <Content Include="Animations\char\warrior\sprite-sheet-b-240x104.png" />
+    <Content Include="SoundFX\ArmamentEnchantment.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SoundFX\DeathSound.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SoundFX\Explosion.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SoundFX\FireBall.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SoundFX\GameOverSound.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SoundFX\HitSound.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SoundFX\HitSound2.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SoundFX\HitSound3.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SoundFX\LevelUpSound.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SoundFX\SwordAura.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SoundFX\SwordBasicAttack.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SoundFX\SwordOfJustice.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SoundFX\SwordSlash.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Animations\char\warrior\WarriorDefend.gif" />
     <None Include="Animations\char\warrior\WarriorHurt.gif" />
     <None Include="Animations\char\warrior\WarriorIdle.gif" />

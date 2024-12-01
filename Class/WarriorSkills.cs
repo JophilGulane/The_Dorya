@@ -8,6 +8,7 @@ namespace Game_Character_GUI.Class
 {
     public class WarriorSkills : Skills
     {
+        SoundSystem soundSystem = new SoundSystem();
         public WarriorSkills(string _name, int _energyCost, int _damage, int _buff, string _description) : base(_name, _energyCost, _damage, _buff, _description)
         {
 
@@ -19,6 +20,7 @@ namespace Game_Character_GUI.Class
             Damage = 30;
             Buff = 0;
             Description = "Warrior's basic attack.";
+            soundSystem.PlaySound(@"SoundFX\SwordSlash.wav");
             return Damage;
         }
         public override int UseUltimateSkill()
@@ -28,6 +30,7 @@ namespace Game_Character_GUI.Class
             Damage = 80;
             Buff = 0;
             Description = "Warrior's ultimate attack.";
+            soundSystem.PlaySound(@"SoundFX\SwordOfJustice.wav");
             return Damage;
         }
         public override int UseResortSkill()
@@ -37,6 +40,7 @@ namespace Game_Character_GUI.Class
             Damage = 20;
             Buff = 0;
             Description = "Parry this you filthy casual";
+            soundSystem.PlaySound(@"SoundFX\SwordBasicAttack.wav");
             return Damage;
         }
         public override int UseBuffSkill()
