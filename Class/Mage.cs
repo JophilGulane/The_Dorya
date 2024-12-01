@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Media;
 
 namespace Game_Character_GUI.Class
 {
@@ -78,6 +79,7 @@ namespace Game_Character_GUI.Class
 
         public override string LevelUp()
         {
+            PlaySound(@"SoundFX\LevelUpSound.wav");
             return ($"<--- {Name} leveled up! New stats --->\n" +
                     $"Level: {Level} --> {++Level}\n" +
                     $"Intelligence: {Intelligence} --> {Intelligence += 2}\n" +

@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Media;
 
 namespace Game_Character_GUI.Class
 {
     public abstract class GameCharacter
     {
+        SoundSystem soundSystem = new SoundSystem();
         private string _name;
         private int _level;
         private int _health;
@@ -61,5 +63,10 @@ namespace Game_Character_GUI.Class
         public abstract int Defend(int damage);
         public abstract string LevelUp();
         public abstract string CheckStats();
+        public void PlaySound(string soundFilePath)
+        {
+            soundSystem.PlaySound(soundFilePath);
+
+        }
     }
 }

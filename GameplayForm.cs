@@ -2,16 +2,19 @@
 using Game_Character_GUI;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using System;
-using System.Drawing;
-using System.Diagnostics;
-using Game_Character_GUI.Class;
+using static System.Net.Mime.MediaTypeNames;
 
 public partial class GameplayForm : Form
 {
     private GameCharacter player;
     private Enemy currentEnemy;
     private List<Enemy> enemyList;
+
+    //Score
+    private int Score = 0;
+    
+    private Timer enemyTurnTimer;
+    private int enemyTurnDelay = 5000;
     public GameplayForm(GameCharacter playerCharacter)
     {
         InitializeComponent();

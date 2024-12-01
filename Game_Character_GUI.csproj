@@ -46,6 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\SoundSystem.cs" />
+    <Compile Include="GameObjects\CustomProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Class\Enemy.cs" />
     <Compile Include="Class\GameCharacter.cs" />
     <Compile Include="Class\Mage.cs" />
@@ -140,6 +144,25 @@
     <Content Include="Animations\MageIdleEnemy.gif" />
     <Content Include="Animations\WarriorAttack.gif" />
     <Content Include="Animations\WarriorIdle.gif" />
+    <Content Include="Resources\FemaleWarriorDeath.gif" />
+    <Content Include="Resources\FemaleWarriorFastAttack.gif" />
+    <Content Include="Resources\FemaleWarriorHurt.gif" />
+    <Content Include="Resources\FemaleWarriorIcon.png" />
+    <Content Include="Resources\FemaleWarriorPreview.gif" />
+    <Content Include="Resources\FemaleWarriorSlowAttack.gif" />
+    <Content Include="Resources\MageAttack.gif" />
+    <Content Include="Resources\MageDeath.gif" />
+    <Content Include="Resources\MageHurt.gif" />
+    <Content Include="Resources\MageIcon.png" />
+    <Content Include="Resources\MageIdle.gif" />
+    <Content Include="Resources\MagePreview.gif" />
+    <Content Include="Resources\SkeletonAttack1.gif" />
+    <Content Include="Resources\SkeletonAttack2.gif" />
+    <Content Include="Resources\SkeletonDeath.gif" />
+    <Content Include="Resources\SkeletonHurt.gif" />
+    <Content Include="Resources\SkeletonIdle.gif" />
+    <Content Include="Resources\SkeletonPreview.gif" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

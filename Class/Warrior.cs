@@ -79,6 +79,7 @@ namespace Game_Character_GUI.Class
 
         public override string LevelUp()
         {
+            PlaySound(@"SoundFX\LevelUpSound.wav");
             return ($"<--- {Name} leveled up! New stats --->\n" +
                     $"Level: {Level} --> {++Level}\n" +
                     $"Intelligence: {Strength} --> {Strength += 2}\n" +
