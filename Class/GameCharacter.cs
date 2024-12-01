@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,6 +9,7 @@ namespace Game_Character_GUI.Class
 {
     public abstract class GameCharacter
     {
+        
         private string _name;
         private int _level;
         private int _health;
@@ -61,5 +63,19 @@ namespace Game_Character_GUI.Class
         public abstract int Defend(int damage);
         public abstract string LevelUp();
         public abstract string CheckStats();
+        public void PlaySound(string soundFilePath)
+        {
+            try
+            {
+                using (SoundPlayer player = new SoundPlayer(soundFilePath))
+                {
+                    player.Play(); // Play the sound asynchronously
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error playing sound: {ex.Message}");
+            }
+        }
     }
 }
