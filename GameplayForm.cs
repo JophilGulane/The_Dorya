@@ -16,7 +16,7 @@ public partial class GameplayForm : Form
     private int Score = 0;
 
     private Timer enemyTurnTimer;
-    private int enemyTurnDelay = 5000;
+    private int enemyTurnDelay = 1000;
     public GameplayForm(GameCharacter playerCharacter)
     {
         InitializeComponent();
@@ -73,7 +73,60 @@ public partial class GameplayForm : Form
 
         damageLabel.Location = new Point(
             target.Left + (target.Width / 2) - (damageLabel.Width / 2),
-            target.Top - 50
+            target.Top - 20
+        );
+
+        this.Controls.Add(damageLabel);
+
+        int animationSteps = 15;
+        int stepDuration = 100;
+        int moveUpPixels = 1;
+        int alpha = 255;
+
+        Timer animationTimer = new Timer();
+        animationTimer.Interval = stepDuration;
+        animationTimer.Tick += (s, e) =>
+        {
+            if (animationSteps > 0)
+            {
+                damageLabel.Top -= moveUpPixels;
+
+                alpha -= 255 / 20;
+                damageLabel.ForeColor = Color.FromArgb(
+                    Math.Max(alpha, 0),
+                    damageLabel.ForeColor.R,
+                    damageLabel.ForeColor.G,
+                    damageLabel.ForeColor.B
+                );
+
+                animationSteps--;
+            }
+            else
+            {
+                animationTimer.Stop();
+                animationTimer.Dispose();
+                this.Controls.Remove(damageLabel);
+                damageLabel.Dispose();
+            }
+        };
+
+        animationTimer.Start();
+    }
+
+    private void ShowEffectPopup(string effect, Control target)
+    {
+        Label damageLabel = new Label
+        {
+            Text = $"{effect}",
+            AutoSize = true,
+            Font = new Font("Arial", 16, FontStyle.Bold),
+            ForeColor = Color.White,
+            BackColor = Color.Transparent
+        };
+
+        damageLabel.Location = new Point(
+            target.Left + (target.Width / 2) - (damageLabel.Width / 2),
+            target.Top - 20
         );
 
         this.Controls.Add(damageLabel);
@@ -128,7 +181,10 @@ public partial class GameplayForm : Form
 
     private void StartPlayerTurn()
     {
-        AddToBattleLog("Enemy's Turn!", Color.Green);
+        AddToBattleLog("Player's Turn!", Color.Green);
+        lblTurns.Text = ("Player's Turn!");
+        lblTurns.ForeColor = Color.Green;
+        lblTurns.Visible = true;
         EnablePlayerControls();
     }
 
@@ -138,7 +194,10 @@ public partial class GameplayForm : Form
         enemyTurnTimer.Interval = enemyTurnDelay;
         enemyTurnTimer.Tick += EnemyTurnTimer_Tick;
 
-        AddToBattleLog("Enemy's Turn!", Color.Green);
+        AddToBattleLog("Enemy's Turn!", Color.Orange);
+        lblTurns.Text = ("Enemy's Turn!");
+        lblTurns.ForeColor = Color.Red;
+        lblTurns.Visible = true;
         DisablePlayerControls();
         enemyTurnTimer.Start();
         Timer DelayEnemyAttack = new Timer();
@@ -153,10 +212,16 @@ public partial class GameplayForm : Form
         if (GameMenu.CharacterType == "Warrior")
         {
             picPlayer.Image = Game_Character_GUI.Properties.Resources.FemaleWarriorIdle;
+            btnSkillOne.Image = Game_Character_GUI.Properties.Resources.WarriorSkillOne;
+            btnSkillTwo.Image = Game_Character_GUI.Properties.Resources.WarriorSkillTwo;
+            btnBuff.Image = Game_Character_GUI.Properties.Resources.WarriorBuff;
         }
         else if (GameMenu.CharacterType == "Mage")
         {
             picPlayer.Image = Game_Character_GUI.Properties.Resources.MageIdle;
+            btnSkillOne.Image = Game_Character_GUI.Properties.Resources.MageSkillOne;
+            btnSkillTwo.Image = Game_Character_GUI.Properties.Resources.MageSkillTwo;
+            btnBuff.Image = Game_Character_GUI.Properties.Resources.MageBuff;
         }
 
         lblPlayerName.Text = $"{player.Name} lvl. {player.Level}";
@@ -209,10 +274,12 @@ public partial class GameplayForm : Form
         battleLog.Select(start, message.Length);
         battleLog.SelectionColor = textColor;
         battleLog.Select(battleLog.TextLength, 0);
+        battleLog.SelectionStart = battleLog.Text.Length;
+        battleLog.ScrollToCaret();
     }
 
 
-
+    
     private void ActivateSkill(string skill) 
     {
         int damage = 0;
@@ -251,6 +318,7 @@ public partial class GameplayForm : Form
             else
             {
                 AddToBattleLog($"Not enough stamina", Color.Red);
+                ShowEffectPopup($"Not enough stamina", picPlayer);
             }
         }
         else if (player is Mage mage)
@@ -265,6 +333,7 @@ public partial class GameplayForm : Form
             else
             {
                 AddToBattleLog($"Not enough mana", Color.Red);
+                ShowEffectPopup($"Not enough mana", picPlayer);
             }
         }
     }
@@ -311,6 +380,7 @@ public partial class GameplayForm : Form
         if (currentEnemy.Health <= 0)
         {
             player.LevelUp();
+            ShowEffectPopup("Leveled Up!", picPlayer);
             playerHealthBar.Maximum = player.Health;
             lblPlayerName.Text = $"{player.Name} lvl. {player.Level}";
             UpdateHealthBar(playerHealthBar, player.Health);
@@ -318,7 +388,7 @@ public partial class GameplayForm : Form
             AddScore();
             AddToBattleLog($"{currentEnemy.Name} defeated!", Color.Green);
             AddToBattleLog($"{player.Level - 1} --> {player.Level} ", Color.Blue);
-            StartBattle();
+            PlayEnemyDeathAnimation();
         }
         else
         {
@@ -331,7 +401,7 @@ public partial class GameplayForm : Form
     {
         if (GameMenu.CharacterType == "Warrior")
         {
-            picPlayer.Image = Game_Character_GUI.Properties.Resources.FemaleWarriorSlowAttack;
+            picPlayer.Image = Game_Character_GUI.Properties.Resources.FemaleWarriorFastAttack;
         }
         else if (GameMenu.CharacterType == "Mage")
         {
@@ -351,12 +421,34 @@ public partial class GameplayForm : Form
         AddToBattleLog("Player Attack Animation", Color.Green);
     }
 
-    private void PlayEnemyAttackAnimation()
+    private void PlayEnemyDeathAnimation()
+    {
+        EnemyDeath();
+
+        Timer enemyDeathTimer = new Timer
+        {
+            Interval = 3000 // Allow time for the animation to play
+        };
+
+        enemyDeathTimer.Tick += (s, e) =>
+        {
+            enemyDeathTimer.Stop();
+            enemyDeathTimer.Dispose();
+
+            // Load next enemy after the animation
+            StartBattle();
+        };
+
+        enemyDeathTimer.Start();
+        AddToBattleLog("Enemy death animation played.", Color.Green);
+    }
+
+        private void PlayEnemyAttackAnimation()
     {
         EnemyAttackAnimation();
         PlayerHurt();
         Timer enemyAttackTimer = new Timer();
-        enemyAttackTimer.Interval = 2000;
+        enemyAttackTimer.Interval = 4000;
         enemyAttackTimer.Tick += (s, e) =>
         {
             enemyAttackTimer.Stop();
@@ -381,18 +473,20 @@ public partial class GameplayForm : Form
 
     private void SetEnemyIdle()
     {
-        switch (currentEnemy.Name)
+        if(currentEnemy.Health > 0)
         {
-            case "Skeleton":
-                picEnemy.Image = Game_Character_GUI.Properties.Resources.SkeletonIdle;
-                break;
-            case "Bat":
-                picEnemy.Image = Game_Character_GUI.Properties.Resources.BatIdle;
-                break;
-            case "Orc":
-                picEnemy.Image = Game_Character_GUI.Properties.Resources.OrcIdle;
-                break;
-
+            switch (currentEnemy.Name)
+            {
+                case "Skeleton":
+                    picEnemy.Image = Game_Character_GUI.Properties.Resources.SkeletonIdle;
+                    break;
+                case "Bat":
+                    picEnemy.Image = Game_Character_GUI.Properties.Resources.BatIdle;
+                    break;
+                case "Orc":
+                    picEnemy.Image = Game_Character_GUI.Properties.Resources.OrcIdle;
+                    break;
+            }
         }
     }
 
@@ -468,14 +562,16 @@ public partial class GameplayForm : Form
         if (reducedDamage == 0)
         {
             AddToBattleLog($"{currentEnemy.Name} attacked blocked", Color.Green);
+            ShowEffectPopup("Blocked", picPlayer);
         }
         else
         {
             player.Health -= reducedDamage;
             AddToBattleLog($"{currentEnemy.Name} attacks Player and deals {reducedDamage} damage!", Color.Gold);
+            ShowDamagePopup(reducedDamage, picPlayer);
         }
 
-        ShowDamagePopup(reducedDamage, picPlayer);
+
         UpdateHealthBar(playerHealthBar, player.Health);
 
 
@@ -513,5 +609,10 @@ public partial class GameplayForm : Form
         {
             picPlayer.Image = Game_Character_GUI.Properties.Resources.MageIdle;
         }
+    }
+
+    private void picPlayer_Click(object sender, EventArgs e)
+    {
+
     }
 }

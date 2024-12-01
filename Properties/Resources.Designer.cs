@@ -73,6 +73,16 @@ namespace Game_Character_GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap BasicAttack {
+            get {
+                object obj = ResourceManager.GetObject("BasicAttack", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap BatAttack {
             get {
                 object obj = ResourceManager.GetObject("BatAttack", resourceCulture);
@@ -183,6 +193,16 @@ namespace Game_Character_GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap MageBuff {
+            get {
+                object obj = ResourceManager.GetObject("MageBuff", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap MageDeath {
             get {
                 object obj = ResourceManager.GetObject("MageDeath", resourceCulture);
@@ -243,6 +263,26 @@ namespace Game_Character_GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap MageSkillOne {
+            get {
+                object obj = ResourceManager.GetObject("MageSkillOne", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap MageSkillTwo {
+            get {
+                object obj = ResourceManager.GetObject("MageSkillTwo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap OrcAttack {
             get {
                 object obj = ResourceManager.GetObject("OrcAttack", resourceCulture);
@@ -276,6 +316,16 @@ namespace Game_Character_GUI.Properties {
         public static System.Drawing.Bitmap OrcIdle {
             get {
                 object obj = ResourceManager.GetObject("OrcIdle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Screenshot_2024_12_02_011908 {
+            get {
+                object obj = ResourceManager.GetObject("Screenshot_2024_12_02_011908", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -336,6 +386,86 @@ namespace Game_Character_GUI.Properties {
         public static System.Drawing.Bitmap SkeletonPreview {
             get {
                 object obj = ResourceManager.GetObject("SkeletonPreview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap WarriorAttack {
+            get {
+                object obj = ResourceManager.GetObject("WarriorAttack", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap WarriorBuff {
+            get {
+                object obj = ResourceManager.GetObject("WarriorBuff", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap WarriorDefend {
+            get {
+                object obj = ResourceManager.GetObject("WarriorDefend", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap WarriorHurt {
+            get {
+                object obj = ResourceManager.GetObject("WarriorHurt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap WarriorIcon {
+            get {
+                object obj = ResourceManager.GetObject("WarriorIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap WarriorIdle {
+            get {
+                object obj = ResourceManager.GetObject("WarriorIdle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap WarriorSkillOne {
+            get {
+                object obj = ResourceManager.GetObject("WarriorSkillOne", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap WarriorSkillTwo {
+            get {
+                object obj = ResourceManager.GetObject("WarriorSkillTwo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

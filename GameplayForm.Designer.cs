@@ -29,6 +29,7 @@ public partial class GameplayForm : Form
             this.lblScore = new System.Windows.Forms.Label();
             this.lblEnemyHealth = new System.Windows.Forms.Label();
             this.lblPlayerHealth = new System.Windows.Forms.Label();
+            this.lblTurns = new System.Windows.Forms.Label();
             this.playerHealthBar = new CustomProgressBar();
             this.energyBar = new CustomProgressBar();
             this.EnemyHealthBar = new CustomProgressBar();
@@ -50,14 +51,14 @@ public partial class GameplayForm : Form
             // 
             // picPlayer
             // 
-            this.picPlayer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.picPlayer.BackColor = System.Drawing.Color.Transparent;
             this.picPlayer.Location = new System.Drawing.Point(200, 200);
             this.picPlayer.Name = "picPlayer";
             this.picPlayer.Size = new System.Drawing.Size(250, 250);
-            this.picPlayer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picPlayer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picPlayer.TabIndex = 2;
             this.picPlayer.TabStop = false;
+            this.picPlayer.Click += new System.EventHandler(this.picPlayer_Click);
             // 
             // lblEnemyName
             // 
@@ -90,7 +91,7 @@ public partial class GameplayForm : Form
             this.btnCheckStats.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnCheckStats.Font = new System.Drawing.Font("Modern No. 20", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCheckStats.ForeColor = System.Drawing.Color.Red;
-            this.btnCheckStats.Location = new System.Drawing.Point(25, 131);
+            this.btnCheckStats.Location = new System.Drawing.Point(253, 114);
             this.btnCheckStats.Name = "btnCheckStats";
             this.btnCheckStats.Size = new System.Drawing.Size(100, 50);
             this.btnCheckStats.TabIndex = 10;
@@ -103,7 +104,7 @@ public partial class GameplayForm : Form
             this.battleLog.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.battleLog.BackColor = System.Drawing.Color.DarkCyan;
             this.battleLog.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.battleLog.Location = new System.Drawing.Point(407, 146);
+            this.battleLog.Location = new System.Drawing.Point(772, 88);
             this.battleLog.Name = "battleLog";
             this.battleLog.Size = new System.Drawing.Size(189, 78);
             this.battleLog.TabIndex = 11;
@@ -121,41 +122,49 @@ public partial class GameplayForm : Form
             // 
             // btnBasicAttack
             // 
-            this.btnBasicAttack.Location = new System.Drawing.Point(25, 206);
+            this.btnBasicAttack.BackgroundImage = global::Game_Character_GUI.Properties.Resources.BasicAttack;
+            this.btnBasicAttack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBasicAttack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBasicAttack.Location = new System.Drawing.Point(25, 114);
             this.btnBasicAttack.Name = "btnBasicAttack";
-            this.btnBasicAttack.Size = new System.Drawing.Size(100, 50);
+            this.btnBasicAttack.Size = new System.Drawing.Size(80, 80);
             this.btnBasicAttack.TabIndex = 13;
-            this.btnBasicAttack.Text = "Basic Attack";
             this.btnBasicAttack.UseVisualStyleBackColor = true;
             this.btnBasicAttack.Click += new System.EventHandler(this.BtnBasicAttack_Click);
             // 
             // btnSkillOne
             // 
-            this.btnSkillOne.Location = new System.Drawing.Point(25, 281);
+            this.btnSkillOne.BackgroundImage = global::Game_Character_GUI.Properties.Resources.MageSkillOne;
+            this.btnSkillOne.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSkillOne.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSkillOne.Location = new System.Drawing.Point(25, 200);
             this.btnSkillOne.Name = "btnSkillOne";
-            this.btnSkillOne.Size = new System.Drawing.Size(100, 50);
+            this.btnSkillOne.Size = new System.Drawing.Size(80, 80);
             this.btnSkillOne.TabIndex = 15;
-            this.btnSkillOne.Text = "Skill One";
             this.btnSkillOne.UseVisualStyleBackColor = true;
             this.btnSkillOne.Click += new System.EventHandler(this.btnSkillOne_Click);
             // 
             // btnSkillTwo
             // 
-            this.btnSkillTwo.Location = new System.Drawing.Point(25, 356);
+            this.btnSkillTwo.BackgroundImage = global::Game_Character_GUI.Properties.Resources.MageSkillTwo;
+            this.btnSkillTwo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSkillTwo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSkillTwo.Location = new System.Drawing.Point(25, 286);
             this.btnSkillTwo.Name = "btnSkillTwo";
-            this.btnSkillTwo.Size = new System.Drawing.Size(100, 50);
+            this.btnSkillTwo.Size = new System.Drawing.Size(80, 80);
             this.btnSkillTwo.TabIndex = 16;
-            this.btnSkillTwo.Text = "Skill Two";
             this.btnSkillTwo.UseVisualStyleBackColor = true;
             this.btnSkillTwo.Click += new System.EventHandler(this.btnSkillTwo_Click);
             // 
             // btnBuff
             // 
-            this.btnBuff.Location = new System.Drawing.Point(25, 431);
+            this.btnBuff.BackgroundImage = global::Game_Character_GUI.Properties.Resources.MageBuff;
+            this.btnBuff.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnBuff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuff.Location = new System.Drawing.Point(25, 372);
             this.btnBuff.Name = "btnBuff";
-            this.btnBuff.Size = new System.Drawing.Size(100, 50);
+            this.btnBuff.Size = new System.Drawing.Size(80, 80);
             this.btnBuff.TabIndex = 17;
-            this.btnBuff.Text = "Buff";
             this.btnBuff.UseVisualStyleBackColor = true;
             this.btnBuff.Click += new System.EventHandler(this.btnBuff_Click);
             // 
@@ -198,6 +207,20 @@ public partial class GameplayForm : Form
             this.lblPlayerHealth.Text = "Enemy Health";
             this.lblPlayerHealth.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lblTurns
+            // 
+            this.lblTurns.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblTurns.BackColor = System.Drawing.Color.Transparent;
+            this.lblTurns.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTurns.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblTurns.Location = new System.Drawing.Point(407, 453);
+            this.lblTurns.Name = "lblTurns";
+            this.lblTurns.Size = new System.Drawing.Size(189, 45);
+            this.lblTurns.TabIndex = 25;
+            this.lblTurns.Text = "Turns";
+            this.lblTurns.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTurns.Visible = false;
+            // 
             // playerHealthBar
             // 
             this.playerHealthBar.Location = new System.Drawing.Point(44, 39);
@@ -231,6 +254,7 @@ public partial class GameplayForm : Form
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1000, 500);
+            this.Controls.Add(this.lblTurns);
             this.Controls.Add(this.lblPlayerHealth);
             this.Controls.Add(this.lblEnemyHealth);
             this.Controls.Add(this.lblScore);
@@ -245,8 +269,8 @@ public partial class GameplayForm : Form
             this.Controls.Add(this.battleLog);
             this.Controls.Add(this.btnCheckStats);
             this.Controls.Add(this.lblPlayerName);
-            this.Controls.Add(this.picPlayer);
             this.Controls.Add(this.lblEnemyName);
+            this.Controls.Add(this.picPlayer);
             this.Controls.Add(this.picEnemy);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "GameplayForm";
@@ -272,4 +296,5 @@ public partial class GameplayForm : Form
     private Label lblScore;
     private Label lblEnemyHealth;
     private Label lblPlayerHealth;
+    private Label lblTurns;
 }

@@ -57,7 +57,7 @@
             // lblCharacterType
             // 
             this.lblCharacterType.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCharacterType.Location = new System.Drawing.Point(416, 114);
+            this.lblCharacterType.Location = new System.Drawing.Point(425, 115);
             this.lblCharacterType.Name = "lblCharacterType";
             this.lblCharacterType.Size = new System.Drawing.Size(184, 27);
             this.lblCharacterType.TabIndex = 2;
@@ -100,7 +100,7 @@
             // 
             this.lblWarrior.AutoSize = true;
             this.lblWarrior.Font = new System.Drawing.Font("Modern No. 20", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWarrior.Location = new System.Drawing.Point(274, 134);
+            this.lblWarrior.Location = new System.Drawing.Point(309, 134);
             this.lblWarrior.Name = "lblWarrior";
             this.lblWarrior.Size = new System.Drawing.Size(130, 25);
             this.lblWarrior.TabIndex = 12;
@@ -110,7 +110,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Modern No. 20", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(620, 134);
+            this.label2.Location = new System.Drawing.Point(627, 134);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 25);
             this.label2.TabIndex = 13;
@@ -120,10 +120,10 @@
             // 
             this.picWarrior.BackColor = System.Drawing.Color.Gray;
             this.picWarrior.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picWarrior.Image = global::Game_Character_GUI.Properties.Resources.FemaleWarriorIcon;
-            this.picWarrior.Location = new System.Drawing.Point(255, 162);
+            this.picWarrior.Image = global::Game_Character_GUI.Properties.Resources.FemaleWarriorIcon1;
+            this.picWarrior.Location = new System.Drawing.Point(279, 162);
             this.picWarrior.Name = "picWarrior";
-            this.picWarrior.Size = new System.Drawing.Size(177, 154);
+            this.picWarrior.Size = new System.Drawing.Size(200, 150);
             this.picWarrior.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picWarrior.TabIndex = 9;
             this.picWarrior.TabStop = false;
@@ -137,7 +137,7 @@
             this.picMage.Image = global::Game_Character_GUI.Properties.Resources.MagePreview1;
             this.picMage.Location = new System.Drawing.Point(566, 162);
             this.picMage.Name = "picMage";
-            this.picMage.Size = new System.Drawing.Size(184, 154);
+            this.picMage.Size = new System.Drawing.Size(200, 150);
             this.picMage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picMage.TabIndex = 8;
             this.picMage.TabStop = false;

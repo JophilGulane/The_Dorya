@@ -73,7 +73,7 @@ namespace Game_Character_GUI
 
         private void HighlightSelection(PictureBox selectedPictureBox)
         {
-            picWarrior.Image = Game_Character_GUI.Properties.Resources.FemaleWarriorIcon;
+            picWarrior.Image = Game_Character_GUI.Properties.Resources.FemaleWarriorPreview;
             picMage.Image = Game_Character_GUI.Properties.Resources.MagePreview;
             picMage.BackColor = Color.Gray;
             picWarrior.BackColor = Color.Gray;
@@ -81,7 +81,7 @@ namespace Game_Character_GUI
             selectedPictureBox.BackColor = System.Drawing.Color.DeepPink;
             if (selectedPictureBox.Name == "picWarrior" )
             {
-                picWarrior.Image = Game_Character_GUI.Properties.Resources.FemaleWarriorPreview;
+                picWarrior.Image = Game_Character_GUI.Properties.Resources.FemaleWarriorIdle;
             }
             else if (selectedPictureBox.Name == "picMage")
             {
