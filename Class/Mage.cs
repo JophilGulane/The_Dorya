@@ -80,7 +80,7 @@ namespace Game_Character_GUI.Class
         {
             return ($"<--- {Name} leveled up! New stats --->\n" +
                     $"Level: {Level} --> {++Level}\n" +
-                    $"Level: {Health} --> {10 * Level}\n" +
+                    $"Health: {Health} --> {Health = (10 * Level)}\n" +
                     $"Intelligence: {Intelligence} --> {Intelligence += 2}\n" +
                     $"Mana: {Mana} --> {Mana += 10}\n" +
                     $"SpellPower: {AttackPower} --> {AttackPower += 3}");

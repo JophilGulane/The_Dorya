@@ -2,6 +2,7 @@
 using Game_Character_GUI.Class;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
@@ -200,6 +201,8 @@ public partial class GameplayForm : Form
         lblTurns.Visible = true;
         DisablePlayerControls();
         enemyTurnTimer.Start();
+
+
         Timer DelayEnemyAttack = new Timer();
         DelayEnemyAttack.Interval = 3000;
         DelayEnemyAttack.Start();
@@ -349,7 +352,8 @@ public partial class GameplayForm : Form
         if (currentEnergy > energyBar.Maximum) currentEnergy = energyBar.Maximum;
         energyBar.Value = currentEnergy;
     }
-    private void BtnBasicAttack_Click(object sender, EventArgs e)
+
+    private void btnBasicAttack_Click_1(object sender, EventArgs e)
     {
         ActivateSkill("BasicAttack");
     }
@@ -427,7 +431,7 @@ public partial class GameplayForm : Form
 
         Timer enemyDeathTimer = new Timer
         {
-            Interval = 3000 // Allow time for the animation to play
+            Interval = 3000
         };
 
         enemyDeathTimer.Tick += (s, e) =>
@@ -435,7 +439,6 @@ public partial class GameplayForm : Form
             enemyDeathTimer.Stop();
             enemyDeathTimer.Dispose();
 
-            // Load next enemy after the animation
             StartBattle();
         };
 
@@ -589,6 +592,11 @@ public partial class GameplayForm : Form
         btnSkillOne.Enabled = true;
         btnSkillTwo.Enabled = true;
         btnBuff.Enabled = true;
+
+        AddToBattleLog("Player controls enable", Color.Gray);
+        AddToBattleLog($"EnablePlayerControls: BasicAttack: {btnBasicAttack.Enabled}", Color.Red);
+
+
     }
 
     private void DisablePlayerControls()
@@ -597,6 +605,9 @@ public partial class GameplayForm : Form
         btnSkillOne.Enabled = false;
         btnSkillTwo.Enabled = false;
         btnBuff.Enabled = false;
+
+        AddToBattleLog("Player controls disabled", Color.Gray);
+        AddToBattleLog($"DisablePlayerControls: BasicAttack: {btnBasicAttack.Enabled}", Color.Red);
     }
 
     private void PlayerIdle()
@@ -615,4 +626,6 @@ public partial class GameplayForm : Form
     {
 
     }
+
+
 }

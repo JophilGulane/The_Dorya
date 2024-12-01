@@ -22,7 +22,6 @@ public partial class GameplayForm : Form
             this.battleLog = new System.Windows.Forms.RichTextBox();
             this.attackTimer = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnBasicAttack = new System.Windows.Forms.Button();
             this.btnSkillOne = new System.Windows.Forms.Button();
             this.btnSkillTwo = new System.Windows.Forms.Button();
             this.btnBuff = new System.Windows.Forms.Button();
@@ -30,6 +29,7 @@ public partial class GameplayForm : Form
             this.lblEnemyHealth = new System.Windows.Forms.Label();
             this.lblPlayerHealth = new System.Windows.Forms.Label();
             this.lblTurns = new System.Windows.Forms.Label();
+            this.btnBasicAttack = new System.Windows.Forms.Button();
             this.playerHealthBar = new CustomProgressBar();
             this.energyBar = new CustomProgressBar();
             this.EnemyHealthBar = new CustomProgressBar();
@@ -120,18 +120,6 @@ public partial class GameplayForm : Form
             this.panel1.Size = new System.Drawing.Size(0, 0);
             this.panel1.TabIndex = 12;
             // 
-            // btnBasicAttack
-            // 
-            this.btnBasicAttack.BackgroundImage = global::Game_Character_GUI.Properties.Resources.BasicAttack;
-            this.btnBasicAttack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBasicAttack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBasicAttack.Location = new System.Drawing.Point(25, 114);
-            this.btnBasicAttack.Name = "btnBasicAttack";
-            this.btnBasicAttack.Size = new System.Drawing.Size(80, 80);
-            this.btnBasicAttack.TabIndex = 13;
-            this.btnBasicAttack.UseVisualStyleBackColor = true;
-            this.btnBasicAttack.Click += new System.EventHandler(this.BtnBasicAttack_Click);
-            // 
             // btnSkillOne
             // 
             this.btnSkillOne.BackgroundImage = global::Game_Character_GUI.Properties.Resources.MageSkillOne;
@@ -221,6 +209,19 @@ public partial class GameplayForm : Form
             this.lblTurns.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblTurns.Visible = false;
             // 
+            // btnBasicAttack
+            // 
+            this.btnBasicAttack.BackColor = System.Drawing.SystemColors.Control;
+            this.btnBasicAttack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnBasicAttack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBasicAttack.Image = global::Game_Character_GUI.Properties.Resources.BasicAttack;
+            this.btnBasicAttack.Location = new System.Drawing.Point(25, 114);
+            this.btnBasicAttack.Name = "btnBasicAttack";
+            this.btnBasicAttack.Size = new System.Drawing.Size(80, 80);
+            this.btnBasicAttack.TabIndex = 26;
+            this.btnBasicAttack.UseVisualStyleBackColor = false;
+            this.btnBasicAttack.Click += new System.EventHandler(this.btnBasicAttack_Click_1);
+            // 
             // playerHealthBar
             // 
             this.playerHealthBar.Location = new System.Drawing.Point(44, 39);
@@ -254,6 +255,7 @@ public partial class GameplayForm : Form
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1000, 500);
+            this.Controls.Add(this.btnBasicAttack);
             this.Controls.Add(this.lblTurns);
             this.Controls.Add(this.lblPlayerHealth);
             this.Controls.Add(this.lblEnemyHealth);
@@ -264,7 +266,6 @@ public partial class GameplayForm : Form
             this.Controls.Add(this.btnBuff);
             this.Controls.Add(this.btnSkillTwo);
             this.Controls.Add(this.btnSkillOne);
-            this.Controls.Add(this.btnBasicAttack);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.battleLog);
             this.Controls.Add(this.btnCheckStats);
@@ -286,7 +287,6 @@ public partial class GameplayForm : Form
     private System.ComponentModel.IContainer components;
     public Timer attackTimer;
     private Panel panel1;
-    private Button btnBasicAttack;
     private Button btnSkillOne;
     private Button btnSkillTwo;
     private Button btnBuff;
@@ -297,4 +297,5 @@ public partial class GameplayForm : Form
     private Label lblEnemyHealth;
     private Label lblPlayerHealth;
     private Label lblTurns;
+    public Button btnBasicAttack;
 }
