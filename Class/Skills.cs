@@ -65,6 +65,7 @@ namespace Game_Character_GUI.Class
         public abstract int UseUltimateSkill();
         public abstract int UseResortSkill();
         public abstract int UseBuffSkill();
+
     }
 
 }

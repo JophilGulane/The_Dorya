@@ -8,6 +8,7 @@ namespace Game_Character_GUI.Class
 {
     public class Mage : GameCharacter
     {
+
         private int attackPower;
         private int intelligence;
         private int mana;
@@ -78,6 +79,7 @@ namespace Game_Character_GUI.Class
 
         public override string LevelUp()
         {
+            PlaySound(@"SoundFX\LevelUpSound.wav");
             return ($"<--- {Name} leveled up! New stats --->\n" +
                     $"Level: {Level} --> {++Level}\n" +
                     $"Level: {Health} --> {10 * Level}\n" +
