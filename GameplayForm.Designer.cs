@@ -23,7 +23,6 @@ public partial class GameplayForm : Form
             this.attackTimer = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnBasicAttack = new System.Windows.Forms.Button();
-            this.Txt_Test = new System.Windows.Forms.TextBox();
             this.btnSkillOne = new System.Windows.Forms.Button();
             this.btnSkillTwo = new System.Windows.Forms.Button();
             this.btnBuff = new System.Windows.Forms.Button();
@@ -53,9 +52,9 @@ public partial class GameplayForm : Form
             // 
             this.picPlayer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.picPlayer.BackColor = System.Drawing.Color.Transparent;
-            this.picPlayer.Location = new System.Drawing.Point(161, 196);
+            this.picPlayer.Location = new System.Drawing.Point(200, 200);
             this.picPlayer.Name = "picPlayer";
-            this.picPlayer.Size = new System.Drawing.Size(345, 270);
+            this.picPlayer.Size = new System.Drawing.Size(250, 250);
             this.picPlayer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picPlayer.TabIndex = 2;
             this.picPlayer.TabStop = false;
@@ -76,9 +75,9 @@ public partial class GameplayForm : Form
             // 
             this.picEnemy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.picEnemy.BackColor = System.Drawing.Color.Transparent;
-            this.picEnemy.Location = new System.Drawing.Point(501, 194);
+            this.picEnemy.Location = new System.Drawing.Point(550, 200);
             this.picEnemy.Name = "picEnemy";
-            this.picEnemy.Size = new System.Drawing.Size(331, 270);
+            this.picEnemy.Size = new System.Drawing.Size(250, 250);
             this.picEnemy.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picEnemy.TabIndex = 5;
             this.picEnemy.TabStop = false;
@@ -129,15 +128,6 @@ public partial class GameplayForm : Form
             this.btnBasicAttack.Text = "Basic Attack";
             this.btnBasicAttack.UseVisualStyleBackColor = true;
             this.btnBasicAttack.Click += new System.EventHandler(this.BtnBasicAttack_Click);
-            // 
-            // Txt_Test
-            // 
-            this.Txt_Test.Location = new System.Drawing.Point(739, 82);
-            this.Txt_Test.Multiline = true;
-            this.Txt_Test.Name = "Txt_Test";
-            this.Txt_Test.ReadOnly = true;
-            this.Txt_Test.Size = new System.Drawing.Size(164, 106);
-            this.Txt_Test.TabIndex = 14;
             // 
             // btnSkillOne
             // 
@@ -250,7 +240,6 @@ public partial class GameplayForm : Form
             this.Controls.Add(this.btnBuff);
             this.Controls.Add(this.btnSkillTwo);
             this.Controls.Add(this.btnSkillOne);
-            this.Controls.Add(this.Txt_Test);
             this.Controls.Add(this.btnBasicAttack);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.battleLog);
@@ -264,7 +253,6 @@ public partial class GameplayForm : Form
             ((System.ComponentModel.ISupportInitialize)(this.picPlayer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEnemy)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
     }
 
@@ -275,7 +263,6 @@ public partial class GameplayForm : Form
     public Timer attackTimer;
     private Panel panel1;
     private Button btnBasicAttack;
-    private TextBox Txt_Test;
     private Button btnSkillOne;
     private Button btnSkillTwo;
     private Button btnBuff;

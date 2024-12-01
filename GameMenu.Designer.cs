@@ -21,17 +21,16 @@
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameMenu));
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.lblCharacterType = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.btnStartGame = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.picWarrior = new System.Windows.Forms.PictureBox();
-            this.picMage = new System.Windows.Forms.PictureBox();
             this.lblWarrior = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.picWarrior = new System.Windows.Forms.PictureBox();
+            this.picMage = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picWarrior)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMage)).BeginInit();
             this.SuspendLayout();
@@ -97,33 +96,6 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // picWarrior
-            // 
-            this.picWarrior.BackColor = System.Drawing.Color.Gray;
-            this.picWarrior.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picWarrior.Image = ((System.Drawing.Image)(resources.GetObject("picWarrior.Image")));
-            this.picWarrior.Location = new System.Drawing.Point(255, 162);
-            this.picWarrior.Name = "picWarrior";
-            this.picWarrior.Size = new System.Drawing.Size(179, 154);
-            this.picWarrior.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picWarrior.TabIndex = 9;
-            this.picWarrior.TabStop = false;
-            this.picWarrior.Click += new System.EventHandler(this.picWarrior_Click);
-            // 
-            // picMage
-            // 
-            this.picMage.BackColor = System.Drawing.Color.Gray;
-            this.picMage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.picMage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picMage.Image = global::Game_Character_GUI.Properties.Resources.MageIdle;
-            this.picMage.Location = new System.Drawing.Point(566, 162);
-            this.picMage.Name = "picMage";
-            this.picMage.Size = new System.Drawing.Size(184, 154);
-            this.picMage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picMage.TabIndex = 8;
-            this.picMage.TabStop = false;
-            this.picMage.Click += new System.EventHandler(this.picMage_Click);
-            // 
             // lblWarrior
             // 
             this.lblWarrior.AutoSize = true;
@@ -143,6 +115,33 @@
             this.label2.Size = new System.Drawing.Size(83, 25);
             this.label2.TabIndex = 13;
             this.label2.Text = "MAGE";
+            // 
+            // picWarrior
+            // 
+            this.picWarrior.BackColor = System.Drawing.Color.Gray;
+            this.picWarrior.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picWarrior.Image = global::Game_Character_GUI.Properties.Resources.FemaleWarriorIcon;
+            this.picWarrior.Location = new System.Drawing.Point(255, 162);
+            this.picWarrior.Name = "picWarrior";
+            this.picWarrior.Size = new System.Drawing.Size(177, 154);
+            this.picWarrior.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picWarrior.TabIndex = 9;
+            this.picWarrior.TabStop = false;
+            this.picWarrior.Click += new System.EventHandler(this.picWarrior_Click);
+            // 
+            // picMage
+            // 
+            this.picMage.BackColor = System.Drawing.Color.Gray;
+            this.picMage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.picMage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picMage.Image = global::Game_Character_GUI.Properties.Resources.MagePreview1;
+            this.picMage.Location = new System.Drawing.Point(566, 162);
+            this.picMage.Name = "picMage";
+            this.picMage.Size = new System.Drawing.Size(184, 154);
+            this.picMage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picMage.TabIndex = 8;
+            this.picMage.TabStop = false;
+            this.picMage.Click += new System.EventHandler(this.picMage_Click);
             // 
             // GameMenu
             // 

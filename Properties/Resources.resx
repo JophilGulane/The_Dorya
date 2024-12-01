@@ -118,31 +118,88 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Background" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Animations\Background.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="FemaleWarriorPreview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Animations\FemaleWarriorPreview.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FemaleWarriorHurt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Animations\FemaleWarriorHurt.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SkeletonAttack1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Animations\SkeletonAttack1.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="MageAttack" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Animations\MageAttack.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="MageAttackEnemy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Animations\MageAttackEnemy.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="FemaleWarriorIcon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Animations\FemaleWarriorIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="MageDefeat" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Animations\MageDefeat.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="FemaleWarriorDeath" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Animations\FemaleWarriorDeath.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="MageDefeatEnemy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Animations\MageDefeatEnemy.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MageIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Animations\MageIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FemaleWarriorIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FemaleWarriorIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SkeletonIdle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Animations\SkeletonIdle.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="MageIdle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Animations\MageIdle.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="MageIdleEnemy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Animations\MageIdleEnemy.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SkeletonPreview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Animations\SkeletonPreview.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="WarriorAttack" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Animations\WarriorAttack.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Background" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Animations\Background.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="WarriorIdle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Animations\WarriorIdle.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="FemaleWarriorIdle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Animations\FemaleWarriorIdle.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FemaleWarriorSlowAttack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Animations\FemaleWarriorSlowAttack.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SkeletonHurt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Animations\SkeletonHurt.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MageHurt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Animations\MageHurt.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MageDeath" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Animations\MageDeath.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FemaleWarriorFastAttack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Animations\FemaleWarriorFastAttack.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MagePreview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Animations\MagePreview.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SkeletonDeath" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Animations\SkeletonDeath.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SkeletonAttack2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Animations\SkeletonAttack2.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MagePreview1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Animations\MagePreview.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BatAttack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Animations\BatAttack.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BatIdle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Animations\BatIdle.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OrcAttack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Animations\OrcAttack.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OrcDeath" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Animations\OrcDeath.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OrcHurt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Animations\OrcHurt.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OrcIdle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Animations\OrcIdle.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

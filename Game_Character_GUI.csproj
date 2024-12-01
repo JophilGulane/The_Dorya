@@ -110,42 +110,55 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Warrior.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Mage.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Goblin.gif" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Background.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\WarriorAttack.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\WarriorIdle.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\MageIdleEnemy.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\MageAttackEnemy.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\MageDefeatEnemy.gif" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Animations\Background.jpg" />
+    <Content Include="Animations\BatAttack.gif" />
+    <Content Include="Animations\BatIdle.gif" />
+    <Content Include="Animations\FemaleWarriorDeath.gif" />
+    <Content Include="Animations\FemaleWarriorFastAttack.gif" />
+    <Content Include="Animations\FemaleWarriorHurt.gif" />
+    <Content Include="Animations\FemaleWarriorIcon.png" />
+    <Content Include="Animations\FemaleWarriorIdle.gif" />
+    <Content Include="Animations\FemaleWarriorPreview.gif" />
+    <Content Include="Animations\FemaleWarriorSlowAttack.gif" />
     <Content Include="Animations\MageAttack.gif" />
-    <Content Include="Animations\MageAttackEnemy.gif" />
-    <Content Include="Animations\MageDefeat.gif" />
-    <Content Include="Animations\MageDefeatEnemy.gif" />
+    <Content Include="Animations\MageDeath.gif" />
+    <Content Include="Animations\MageHurt.gif" />
+    <Content Include="Animations\MageIcon.png" />
     <Content Include="Animations\MageIdle.gif" />
-    <Content Include="Animations\MageIdleEnemy.gif" />
+    <Content Include="Animations\MagePreview.gif" />
+    <Content Include="Animations\OrcAttack.gif" />
+    <Content Include="Animations\OrcDeath.gif" />
+    <Content Include="Animations\OrcHurt.gif" />
+    <Content Include="Animations\OrcIdle.gif" />
+    <Content Include="Animations\SkeletonAttack1.gif" />
+    <Content Include="Animations\SkeletonAttack2.gif" />
+    <Content Include="Animations\SkeletonDeath.gif" />
+    <Content Include="Animations\SkeletonHurt.gif" />
+    <Content Include="Animations\SkeletonIdle.gif" />
+    <Content Include="Animations\SkeletonPreview.gif" />
     <Content Include="Animations\WarriorAttack.gif" />
     <Content Include="Animations\WarriorIdle.gif" />
+    <Content Include="Resources\FemaleWarriorDeath.gif" />
+    <Content Include="Resources\FemaleWarriorFastAttack.gif" />
+    <Content Include="Resources\FemaleWarriorHurt.gif" />
+    <Content Include="Resources\FemaleWarriorIcon.png" />
+    <Content Include="Resources\FemaleWarriorPreview.gif" />
+    <Content Include="Resources\FemaleWarriorSlowAttack.gif" />
+    <Content Include="Resources\MageAttack.gif" />
+    <Content Include="Resources\MageDeath.gif" />
+    <Content Include="Resources\MageHurt.gif" />
+    <Content Include="Resources\MageIcon.png" />
+    <Content Include="Resources\MageIdle.gif" />
+    <Content Include="Resources\MagePreview.gif" />
+    <Content Include="Resources\SkeletonAttack1.gif" />
+    <Content Include="Resources\SkeletonAttack2.gif" />
+    <Content Include="Resources\SkeletonDeath.gif" />
+    <Content Include="Resources\SkeletonHurt.gif" />
+    <Content Include="Resources\SkeletonIdle.gif" />
+    <Content Include="Resources\SkeletonPreview.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

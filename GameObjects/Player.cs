@@ -19,7 +19,7 @@ namespace Game_Character_GUI.GameObjects
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Game_Character_GUI.Properties.Resources.WarriorIdle;
+            this.pictureBox1.Image = global::Game_Character_GUI.Properties.Resources.FemaleWarriorIdle;
             this.pictureBox1.Location = new System.Drawing.Point(-25, -76);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(200, 242);
