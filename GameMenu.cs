@@ -75,10 +75,10 @@ namespace Game_Character_GUI
         {
             picWarrior.Image = Game_Character_GUI.Properties.Resources.FemaleWarriorPreview;
             picMage.Image = Game_Character_GUI.Properties.Resources.MagePreview;
-            picMage.BackColor = Color.Gray;
-            picWarrior.BackColor = Color.Gray;
+            picMage.BackColor = Color.Goldenrod;
+            picWarrior.BackColor = Color.Goldenrod;
 
-            selectedPictureBox.BackColor = System.Drawing.Color.DeepPink;
+            selectedPictureBox.BackColor = System.Drawing.Color.DarkBlue;
             if (selectedPictureBox.Name == "picWarrior" )
             {
                 picWarrior.Image = Game_Character_GUI.Properties.Resources.FemaleWarriorIdle;

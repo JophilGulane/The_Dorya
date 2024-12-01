@@ -52,7 +52,7 @@ public partial class GameplayForm : Form
             // picPlayer
             // 
             this.picPlayer.BackColor = System.Drawing.Color.Transparent;
-            this.picPlayer.Location = new System.Drawing.Point(200, 200);
+            this.picPlayer.Location = new System.Drawing.Point(200, 150);
             this.picPlayer.Name = "picPlayer";
             this.picPlayer.Size = new System.Drawing.Size(250, 250);
             this.picPlayer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -66,8 +66,8 @@ public partial class GameplayForm : Form
             this.lblEnemyName.BackColor = System.Drawing.Color.Transparent;
             this.lblEnemyName.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEnemyName.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblEnemyName.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblEnemyName.Location = new System.Drawing.Point(607, 160);
+            this.lblEnemyName.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.lblEnemyName.Location = new System.Drawing.Point(606, 102);
             this.lblEnemyName.Name = "lblEnemyName";
             this.lblEnemyName.Size = new System.Drawing.Size(126, 23);
             this.lblEnemyName.TabIndex = 3;
@@ -78,7 +78,7 @@ public partial class GameplayForm : Form
             // 
             this.picEnemy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.picEnemy.BackColor = System.Drawing.Color.Transparent;
-            this.picEnemy.Location = new System.Drawing.Point(550, 200);
+            this.picEnemy.Location = new System.Drawing.Point(550, 150);
             this.picEnemy.Name = "picEnemy";
             this.picEnemy.Size = new System.Drawing.Size(250, 250);
             this.picEnemy.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -107,9 +107,9 @@ public partial class GameplayForm : Form
             this.battleLog.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.battleLog.BackColor = System.Drawing.Color.DarkCyan;
             this.battleLog.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.battleLog.Location = new System.Drawing.Point(450, 39);
+            this.battleLog.Location = new System.Drawing.Point(550, 8);
             this.battleLog.Name = "battleLog";
-            this.battleLog.Size = new System.Drawing.Size(179, 69);
+            this.battleLog.Size = new System.Drawing.Size(250, 88);
             this.battleLog.TabIndex = 11;
             this.battleLog.Text = "";
             // 
@@ -178,9 +178,9 @@ public partial class GameplayForm : Form
             this.lblEnemyHealth.BackColor = System.Drawing.Color.Transparent;
             this.lblEnemyHealth.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEnemyHealth.ForeColor = System.Drawing.Color.White;
-            this.lblEnemyHealth.Location = new System.Drawing.Point(724, 186);
+            this.lblEnemyHealth.Location = new System.Drawing.Point(727, 125);
             this.lblEnemyHealth.Name = "lblEnemyHealth";
-            this.lblEnemyHealth.Size = new System.Drawing.Size(261, 14);
+            this.lblEnemyHealth.Size = new System.Drawing.Size(207, 14);
             this.lblEnemyHealth.TabIndex = 23;
             this.lblEnemyHealth.Text = "Enemy Health";
             this.lblEnemyHealth.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -191,11 +191,11 @@ public partial class GameplayForm : Form
             this.lblPlayerHealth.BackColor = System.Drawing.Color.Transparent;
             this.lblPlayerHealth.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPlayerHealth.ForeColor = System.Drawing.Color.White;
-            this.lblPlayerHealth.Location = new System.Drawing.Point(139, 8);
+            this.lblPlayerHealth.Location = new System.Drawing.Point(139, 14);
             this.lblPlayerHealth.Name = "lblPlayerHealth";
-            this.lblPlayerHealth.Size = new System.Drawing.Size(96, 27);
+            this.lblPlayerHealth.Size = new System.Drawing.Size(95, 21);
             this.lblPlayerHealth.TabIndex = 24;
-            this.lblPlayerHealth.Text = "Enemy Health";
+            this.lblPlayerHealth.Text = "Player Health";
             this.lblPlayerHealth.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblTurns
@@ -246,7 +246,7 @@ public partial class GameplayForm : Form
             // EnemyHealthBar
             // 
             this.EnemyHealthBar.Cursor = System.Windows.Forms.Cursors.Default;
-            this.EnemyHealthBar.Location = new System.Drawing.Point(607, 186);
+            this.EnemyHealthBar.Location = new System.Drawing.Point(610, 125);
             this.EnemyHealthBar.Name = "EnemyHealthBar";
             this.EnemyHealthBar.ProgressColor = System.Drawing.Color.Red;
             this.EnemyHealthBar.Size = new System.Drawing.Size(236, 14);
@@ -255,7 +255,7 @@ public partial class GameplayForm : Form
             // 
             // GameplayForm
             // 
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImage = global::Game_Character_GUI.Properties.Resources._24;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1000, 500);
             this.Controls.Add(this.btnBasicAttack);
@@ -276,8 +276,13 @@ public partial class GameplayForm : Form
             this.Controls.Add(this.lblEnemyName);
             this.Controls.Add(this.picPlayer);
             this.Controls.Add(this.picEnemy);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "GameplayForm";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             ((System.ComponentModel.ISupportInitialize)(this.picPlayer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEnemy)).EndInit();
             this.ResumeLayout(false);

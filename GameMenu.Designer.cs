@@ -37,88 +37,103 @@
             // 
             // lblTitle
             // 
-            this.lblTitle.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.Location = new System.Drawing.Point(250, 10);
+            this.lblTitle.BackColor = System.Drawing.Color.Goldenrod;
+            this.lblTitle.Font = new System.Drawing.Font("Playbill", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.lblTitle.Location = new System.Drawing.Point(357, 9);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(500, 50);
+            this.lblTitle.Size = new System.Drawing.Size(307, 60);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Character Creation";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblName
             // 
-            this.lblName.Font = new System.Drawing.Font("Arial", 14F);
-            this.lblName.Location = new System.Drawing.Point(321, 63);
+            this.lblName.BackColor = System.Drawing.Color.Transparent;
+            this.lblName.Font = new System.Drawing.Font("Stencil", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.ForeColor = System.Drawing.Color.DarkOrange;
+            this.lblName.Location = new System.Drawing.Point(356, 74);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(83, 30);
+            this.lblName.Size = new System.Drawing.Size(107, 31);
             this.lblName.TabIndex = 1;
             this.lblName.Text = "Name:";
             // 
             // lblCharacterType
             // 
+            this.lblCharacterType.BackColor = System.Drawing.Color.Transparent;
             this.lblCharacterType.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCharacterType.Location = new System.Drawing.Point(425, 115);
+            this.lblCharacterType.ForeColor = System.Drawing.Color.DarkOrange;
+            this.lblCharacterType.Location = new System.Drawing.Point(425, 121);
             this.lblCharacterType.Name = "lblCharacterType";
-            this.lblCharacterType.Size = new System.Drawing.Size(184, 27);
+            this.lblCharacterType.Size = new System.Drawing.Size(185, 44);
             this.lblCharacterType.TabIndex = 2;
             this.lblCharacterType.Text = "Select Class";
             this.lblCharacterType.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtName
             // 
-            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtName.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtName.Font = new System.Drawing.Font("Arial", 12F);
-            this.txtName.Location = new System.Drawing.Point(410, 63);
+            this.txtName.Font = new System.Drawing.Font("Playbill", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtName.Location = new System.Drawing.Point(461, 74);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(276, 30);
+            this.txtName.Size = new System.Drawing.Size(203, 31);
             this.txtName.TabIndex = 3;
             // 
             // btnStartGame
             // 
-            this.btnStartGame.Font = new System.Drawing.Font("Arial", 14F);
+            this.btnStartGame.BackColor = System.Drawing.Color.Goldenrod;
+            this.btnStartGame.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnStartGame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStartGame.Font = new System.Drawing.Font("Playbill", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStartGame.Location = new System.Drawing.Point(410, 337);
             this.btnStartGame.Name = "btnStartGame";
             this.btnStartGame.Size = new System.Drawing.Size(200, 50);
             this.btnStartGame.TabIndex = 5;
             this.btnStartGame.Text = "Start Game";
-            this.btnStartGame.UseVisualStyleBackColor = true;
+            this.btnStartGame.UseVisualStyleBackColor = false;
             this.btnStartGame.Click += new System.EventHandler(this.btnStartGame_Click);
             // 
             // btnExit
             // 
-            this.btnExit.Font = new System.Drawing.Font("Arial", 14F);
+            this.btnExit.BackColor = System.Drawing.Color.Goldenrod;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Font = new System.Drawing.Font("Playbill", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.Location = new System.Drawing.Point(410, 429);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(200, 50);
             this.btnExit.TabIndex = 6;
             this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // lblWarrior
             // 
             this.lblWarrior.AutoSize = true;
-            this.lblWarrior.Font = new System.Drawing.Font("Modern No. 20", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWarrior.Location = new System.Drawing.Point(309, 134);
+            this.lblWarrior.BackColor = System.Drawing.Color.Transparent;
+            this.lblWarrior.Font = new System.Drawing.Font("Playbill", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWarrior.ForeColor = System.Drawing.Color.DarkOrange;
+            this.lblWarrior.Location = new System.Drawing.Point(318, 119);
             this.lblWarrior.Name = "lblWarrior";
-            this.lblWarrior.Size = new System.Drawing.Size(130, 25);
+            this.lblWarrior.Size = new System.Drawing.Size(110, 40);
             this.lblWarrior.TabIndex = 12;
             this.lblWarrior.Text = "WARRIOR";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Modern No. 20", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(627, 134);
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Playbill", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.DarkOrange;
+            this.label2.Location = new System.Drawing.Point(635, 119);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 25);
+            this.label2.Size = new System.Drawing.Size(75, 40);
             this.label2.TabIndex = 13;
             this.label2.Text = "MAGE";
             // 
             // picWarrior
             // 
-            this.picWarrior.BackColor = System.Drawing.Color.Gray;
+            this.picWarrior.BackColor = System.Drawing.Color.Goldenrod;
+            this.picWarrior.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.picWarrior.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picWarrior.Image = global::Game_Character_GUI.Properties.Resources.FemaleWarriorIcon1;
             this.picWarrior.Location = new System.Drawing.Point(279, 162);
@@ -131,7 +146,7 @@
             // 
             // picMage
             // 
-            this.picMage.BackColor = System.Drawing.Color.Gray;
+            this.picMage.BackColor = System.Drawing.Color.Goldenrod;
             this.picMage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.picMage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picMage.Image = global::Game_Character_GUI.Properties.Resources.MagePreview1;
@@ -145,8 +160,12 @@
             // 
             // GameMenu
             // 
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.LightBlue;
+            this.BackgroundImage = global::Game_Character_GUI.Properties.Resources.Background3;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1000, 500);
+            this.ControlBox = false;
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblWarrior);
             this.Controls.Add(this.picWarrior);
@@ -157,9 +176,12 @@
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.btnStartGame);
             this.Controls.Add(this.btnExit);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Font = new System.Drawing.Font("MS Mincho", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "GameMenu";
-            this.Text = "Main Menu";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Character Creation";
             ((System.ComponentModel.ISupportInitialize)(this.picWarrior)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMage)).EndInit();
             this.ResumeLayout(false);

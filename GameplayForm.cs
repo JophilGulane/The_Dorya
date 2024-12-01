@@ -17,7 +17,7 @@ public partial class GameplayForm : Form
     private int Score = 0;
 
     private Timer enemyTurnTimer;
-    private int enemyTurnDelay = 1000;
+    private int enemyTurnDelay = 2000;
     private bool isEnemyDead = false;
 
     public GameplayForm(GameCharacter playerCharacter)
@@ -206,7 +206,7 @@ public partial class GameplayForm : Form
 
 
         Timer DelayEnemyAttack = new Timer();
-        DelayEnemyAttack.Interval = 3000;
+        DelayEnemyAttack.Interval = 1500;
         DelayEnemyAttack.Start();
     }
 
@@ -448,7 +448,7 @@ public partial class GameplayForm : Form
         EnemyAttackAnimation();
         PlayerHurt();
         Timer enemyAttackTimer = new Timer();
-        enemyAttackTimer.Interval = 4000;
+        enemyAttackTimer.Interval = 2000;
         enemyAttackTimer.Tick += (s, e) =>
         {
             enemyAttackTimer.Stop();
