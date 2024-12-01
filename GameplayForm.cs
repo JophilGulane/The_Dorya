@@ -50,6 +50,7 @@ public partial class GameplayForm : Form
         currentEnemy = enemyList[index];
         currentEnemy.Level = EnemyLevel;
 
+        SetEnemyIdle();
         lblEnemyName.Text = $"{currentEnemy.Name} lvl. {currentEnemy.Level}";
         lblEnemyName.ForeColor = Color.Red;
 
@@ -57,7 +58,6 @@ public partial class GameplayForm : Form
         EnemyHealthBar.Value = currentEnemy.Health;
         EnemyHealthBar.ProgressColor = Color.Red;
         UpdateHealthBar(EnemyHealthBar, currentEnemy.Health);
-        SetEnemyIdle();
     }
 
     private void ShowDamagePopup(int damage, Control target)
@@ -251,7 +251,7 @@ public partial class GameplayForm : Form
             }
             else
             {
-
+                AddToBattleLog($"Not enough stamina", Color.Red);
             }
         }
         else if (player is Mage mage)
@@ -265,7 +265,7 @@ public partial class GameplayForm : Form
             }
             else
             {
-
+                AddToBattleLog($"Not enough mana", Color.Red);
             }
         }
     }
@@ -462,9 +462,9 @@ public partial class GameplayForm : Form
     private void EnemyAttack()
     {
         PlayEnemyAttackAnimation();
-
         int damage = currentEnemy.Attack(player);
         int reducedDamage = player.Defend(damage);
+        player.Health -= damage;
 
         if (reducedDamage == 0)
         {
